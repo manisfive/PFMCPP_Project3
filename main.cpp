@@ -436,11 +436,11 @@ example:
 
 Thing 5) CPU
 5 properties:
-    1) manufacturer
-    2) temperature
-    3) clock speed
-    4) cores
-    5) socket size
+    1) manufacturer (std::string)
+    2) temperature (float)
+    3) clock speed (float)
+    4) cores (int)
+    5) socket size (std::string)
 3 things it can do:
     1) overheat
     2) apply new thermal paste
@@ -448,11 +448,11 @@ Thing 5) CPU
 
 Thing 6) motherboard
 5 properties:
-    1) manufacturer
-    2) wireless LAN capability
-    3) number of m.2 slots
-    4) number of expansion slots
-    5) max RAM capacity
+    1) manufacturer (std::string)
+    2) wireless LAN capability (bool)
+    3) number of m.2 slots (int)
+    4) number of expansion slots (int)
+    5) max RAM capacity (int)
 3 things it can do:
     1) install components
     2) attach wires
@@ -460,11 +460,11 @@ Thing 6) motherboard
 
 Thing 7) keyboard and mouse
 5 properties:
-    1) number of mouse buttons
-    2) keyboard style chiclet/mechanical
-    3) wireless yes/no
-    4) language setting
-    5) numpad yes/no
+    1) number of mouse buttons (int)
+    2) keyboard style chiclet/mechanical (bool)
+    3) wireless yes/no (bool)
+    4) language setting (std::string)
+    5) numpad yes/no (bool)
 3 things it can do:
     1) CTRL + ALT + Delete
     2) left click
@@ -472,11 +472,11 @@ Thing 7) keyboard and mouse
 
 Thing 8) cooling system
 5 properties:
-    1) liquid yes/no
-    2) number of rgb lights
-    3) number of fans
-    4) fan setting
-    5) molex power connector yes/no
+    1) liquid yes/no (bool)
+    2) number of rgb lights (int)
+    3) number of fans (int)
+    4) fan setting (int)
+    5) molex power connector yes/no (bool)
 3 things it can do:
     1) set fan speed
     2) set light color
@@ -484,11 +484,11 @@ Thing 8) cooling system
 
 Thing 9) GPU
 5 properties:
-    1) intel/nvidia
-    2) amount of ram
-    3) clock speed
-    4) number of fans
-    5) number of outputs
+    1) intel/nvidia (bool)
+    2) amount of ram (int)
+    3) clock speed (float)
+    4) number of fans (int)
+    5) number of outputs (int)
 3 things it can do:
     1) set clock speed
     2) set fan speed
