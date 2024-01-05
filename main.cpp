@@ -341,7 +341,7 @@ Thing 10) Computer
 5 properties:
     1) CPU
     2) motherboard
-    3) RAM
+    3) keyboard and mouse
     4) cooling system
     5) GPU
 3 things it can do:
@@ -434,65 +434,65 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
-Thing 5)
+Thing 5) CPU
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) manufacturer
+    2) temperature
+    3) clock speed
+    4) cores
+    5) socket size
 3 things it can do:
-    1)
-    2)
-    3)
+    1) overheat
+    2) apply new thermal paste
+    3) compute
 
-Thing 6)
+Thing 6) motherboard
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) manufacturer
+    2) wireless LAN capability
+    3) number of m.2 slots
+    4) number of expansion slots
+    5) max RAM capacity
 3 things it can do:
-    1)
-    2)
-    3)
+    1) install components
+    2) attach wires
+    3) attach peripherals
 
-Thing 7)
+Thing 7) keyboard and mouse
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of mouse buttons
+    2) keyboard style chiclet/mechanical
+    3) wireless yes/no
+    4) language setting
+    5) numpad yes/no
 3 things it can do:
-    1)
-    2)
-    3)
+    1) CTRL + ALT + Delete
+    2) left click
+    3) right click
 
-Thing 8)
+Thing 8) cooling system
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) liquid yes/no
+    2) number of rgb lights
+    3) number of fans
+    4) fan setting
+    5) molex power connector yes/no
 3 things it can do:
-    1)
-    2)
-    3)
+    1) set fan speed
+    2) set light color
+    3) spring a leak
 
-Thing 9)
+Thing 9) GPU
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) intel/nvidia
+    2) amount of ram
+    3) clock speed
+    4) number of fans
+    5) number of outputs
 3 things it can do:
-    1)
-    2)
-    3)
+    1) set clock speed
+    2) set fan speed
+    3) update driver
  */
 
 /*
