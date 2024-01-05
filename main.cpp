@@ -439,9 +439,9 @@ Thing 1) guitar
     4) acoustic/electric/nylon (std::string)
     5) active pickups yes/no (bool)
 3 things it can do:
-    1) play
+    1) emit note
     2) feedback
-    3) smash
+    3) detach from strap
 
 Thing 2) Oven
 5 properties:
@@ -451,8 +451,8 @@ Thing 2) Oven
     4) cubic feet of interior (float)
     5) self cleaning (bool)
 3 things it can do:
-    1) set desired temperature
-    2) set timer
+    1) heats to desired temperature
+    2) alert timer expired
     3) self-clean
 
 Thing 3) book
@@ -463,21 +463,21 @@ Thing 3) book
     4) number of pages (int)
     5) author (std::string)
 3 things it can do:
-    1) open to desired page
-    2) be read
-    3) be thrown
+    1) display next page
+    2) display previous page
+    3) increment progress from white to yellow
 
-Thing 4) cabinet
+Thing 4) bird
 5 properties:
-    1) wallmounted or freestanding (bool)
-    2) height (flloat)
-    3) width (float)
-    4) depth (float)
-    5) build material (std::string)
+    1) height (float)
+    2) altitude (float)
+    3) wingspan (float)
+    4) type (string)
+    5) gender (bool)
 3 things it can do:
-    1) store item
-    2) be emptied
-    3) be dismantled
+    1) fly
+    2) sing
+    3) eat
 Thing 5) CPU
 5 properties:
     1) manufacturer (std::string)
@@ -486,8 +486,8 @@ Thing 5) CPU
     4) cores (int)
     5) socket size (std::string)
 3 things it can do:
-    1) overheat
-    2) apply new thermal paste
+    1) store data
+    2) output results
     3) compute
 
 Thing 6) motherboard
@@ -498,9 +498,9 @@ Thing 6) motherboard
     4) number of expansion slots (int)
     5) max RAM capacity (int)
 3 things it can do:
-    1) install components
-    2) attach wires
-    3) attach peripherals
+    1) transmit data to RAM
+    2) generate A/V signals
+    3) auto suspend
 
 Thing 7) keyboard and mouse
 5 properties:
@@ -510,9 +510,9 @@ Thing 7) keyboard and mouse
     4) language setting (std::string)
     5) numpad yes/no (bool)
 3 things it can do:
-    1) CTRL + ALT + Delete
-    2) left click
-    3) right click
+    1) transmit keystroke data
+    2) transmit mouse XY change
+    3) toggle status light (like capslock)
 
 Thing 8) cooling system
 5 properties:
@@ -534,9 +534,9 @@ Thing 9) GPU
     4) number of fans (int)
     5) number of outputs (int)
 3 things it can do:
-    1) set clock speed
-    2) set fan speed
-    3) update driver
+    1) output a/v signal
+    2) cycle RGB display
+    3) adjust fan speed
 
 Thing 10) Computer
 5 properties:
@@ -546,9 +546,9 @@ Thing 10) Computer
     4) cooling system
     5) GPU
 3 things it can do:
-    1) power toggle
-    2) open DAW
-    3) open browser
+    1) run program
+    2) allocate RAM
+    3) refresh display
     
 /*
 =================
