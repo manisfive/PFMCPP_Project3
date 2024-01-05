@@ -196,53 +196,53 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-Thing 1)
+Thing 1) guitar
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) make/model
+    2) number of strings
+    3) number of pickups
+    4) acoustic/electric/nylon
+    5) active pickups yes/no
 3 things it can do:
-    1)
-    2)
-    3)
+    1) play
+    2) feedback
+    3) smash
 
-Thing 2)
+Thing 2) Oven
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of burners on the stovetop
+    2) glass top, coil, gas
+    3) rate of temperature increase
+    4) cubic feet of interior
+    5) self cleaning
 3 things it can do:
-    1)
-    2)
-    3)
+    1) set desired temperature
+    2) set timer
+    3) self-clean
 
-Thing 3)
+Thing 3) book
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) height
+    2) width
+    3) hardcover yes/no
+    4) number of pages
+    5) author
 3 things it can do:
-    1)
-    2)
-    3)
+    1) open to desired page
+    2) be read
+    3) be thrown
 
-Thing 4)
+Thing 4) cabinet
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) wallmounted or freestanding
+    2) height
+    3) width
+    4) depth
+    5) build material
 3 things it can do:
-    1)
-    2)
-    3)
+    1) store item
+    2) be emptied
+    3) be dismantled
 */
 
 /*
