@@ -198,11 +198,11 @@ Part 1b - Step 2: Assignment
 
 Thing 1) guitar
 5 properties:
-    1) make/model
-    2) number of strings
-    3) number of pickups
-    4) acoustic/electric/nylon
-    5) active pickups yes/no
+    1) make/model (std::string)
+    2) number of strings (int)
+    3) number of pickups (int)
+    4) acoustic/electric/nylon (std::string)
+    5) active pickups yes/no (bool)
 3 things it can do:
     1) play
     2) feedback
@@ -210,11 +210,11 @@ Thing 1) guitar
 
 Thing 2) Oven
 5 properties:
-    1) number of burners on the stovetop
-    2) glass top, coil, gas
-    3) rate of temperature increase
-    4) cubic feet of interior
-    5) self cleaning
+    1) number of burners on the stovetop (int)
+    2) glass top, coil, gas (std::string)
+    3) rate of temperature increase (float)
+    4) cubic feet of interior (float)
+    5) self cleaning (bool)
 3 things it can do:
     1) set desired temperature
     2) set timer
@@ -222,11 +222,11 @@ Thing 2) Oven
 
 Thing 3) book
 5 properties:
-    1) height
-    2) width
-    3) hardcover yes/no
-    4) number of pages
-    5) author
+    1) height (float)
+    2) width (float)
+    3) hardcover yes/no (bool)
+    4) number of pages (int)
+    5) author (std::string)
 3 things it can do:
     1) open to desired page
     2) be read
@@ -234,11 +234,11 @@ Thing 3) book
 
 Thing 4) cabinet
 5 properties:
-    1) wallmounted or freestanding
-    2) height
-    3) width
-    4) depth
-    5) build material
+    1) wallmounted or freestanding (bool)
+    2) height (flloat)
+    3) width (float)
+    4) depth (float)
+    5) build material (std::string)
 3 things it can do:
     1) store item
     2) be emptied
