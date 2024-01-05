@@ -83,51 +83,51 @@ Main Object: Car Interior
         Name 4 nouns you'll find on the [Sub Object]
             1) paddle shifters
             2) 'cruise control' controls
-            3) 
-            4) 
+            3) phonecall controls
+            4) horn
         Name 2 actions that the [Sub Object] can do:
             1) adjust cruise control settings.
-            2)
+            2) honk horn
         
     Sub Object: Instrument Cluster
         Name 4 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
-            4)
+            1) gear indicator
+            2) speedometer
+            3) tachometer
+            4) engine temperature
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) display current gear
+            2) display current miles per hour
+            3) display current RPM
     
     Sub Object: Environment Controls
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) temperature control
+            2) A/C toggle
+            3) windshield defrost toggle
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) set desired temperature
+            2) enable or disable A/C
+            3) enable or disable windshield fan
 
     Sub Object: Infotainment System
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) power button
+            2) seek buttons
+            3) num pad
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) turn radio on
+            2) make a phone call
+            3) change radio station
 
     Sub Object: Seat 
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) head rest
+            2) seat cushion
+            3) back panel
         Name 2 actions that the [Sub Object] can do:
-            1)
-            2)
+            1) adjust back panel angle
+            2) adjust head rest position
 */
 
 /*
