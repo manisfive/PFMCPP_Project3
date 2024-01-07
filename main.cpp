@@ -459,8 +459,11 @@ struct Guitar
     bool activePickups = false;
     //3 things it can do:
     //    1) emit note
+    int emitNote(std::string noteValue); //midi note number
     //    2) feedback
+    void feedback();
     //    3) detach from strap
+    void detachFromStrap();
 };
 
 /*        
@@ -491,8 +494,11 @@ struct Oven
     bool selfCleaning = true;
     //3 things it can do:
     //    1) heats to desired temperature
+    void heatToDesiredTemperature(float temp);
     //    2) alert timer expired
+    bool alertTimerExpired(int time); //input seconds until true, returns alarmSounds == true
     //    3) self-clean
+    void selfClean();
 };
 
 /*
@@ -523,8 +529,11 @@ struct Book
     std::string author = "Kieth, Sam";
     //3 things it can do:
     //    1) display next page
+    int displayNextPage(); //new page number
     //    2) display previous page
+    int displayPreviousPage(); //new page number
     //    3) increment progress from white to yellow
+    float whiteToYellowProgress(float amount); //input percent yellowed, output total percentage
 };
 
 /*
@@ -555,8 +564,11 @@ struct Bird
     bool isMale = true;
     //3 things it can do:
     //    1) fly
+    float fly(float x, float y); //input target coordinates, output travel time
     //    2) sing
+    void sing();
     //    3) eat
+    float eat(std::string target); //input what's being eaten, ouput new total weight
 };
 /*
 Thing 5) CPU
@@ -586,8 +598,11 @@ struct CPU
     std::string socket = "AM4";
     //3 things it can do:
     //    1) store data
+    float storeData(); //returns stored values
     //    2) output results
+    float outputResults(); //returns current values
     //    3) compute
+    float compute(float x, float y);//returns result of operations on inputs
 };
 /*
 Thing 6) motherboard
@@ -617,8 +632,11 @@ struct Motherboard
     int maxRAM = 64;
     //3 things it can do:
     //    1) transmit data to RAM
+    void dataToRAM();
     //    2) generate A/V signals
+    void generateAVSignals();
     //    3) auto suspend
+    void autoSuspend();
 };
 /*
 Thing 7) keyboard and mouse
@@ -648,8 +666,11 @@ struct KeyboardAndMouse
     bool numpad = false;
     //3 things it can do:
     //    1) transmit keystroke data
+    int transmitKeystrokeData(); //returns ASCII value
     //    2) transmit mouse XY change
+    float transmitXYChange(); //returns distance from a 0,0 position, which refreshes periodically
     //    3) toggle status light (like capslock)
+    bool toggleStatus(std::string status);//in which indicator to toggle, out isLit true or false
 };
 /*
 Thing 8) cooling system
@@ -679,8 +700,11 @@ struct CoolingSystem
     bool molex = false;
     //3 things it can do:
     //    1) set fan speed
-    //    2) set light color
+    void setFanSpeed(int speed);
+    //    2) set light color    
+    void setLightColor(std::string color);
     //    3) spring a leak
+    void springALeak();
 };
 /*
 Thing 9) GPU
@@ -710,8 +734,11 @@ struct GPU
     int numberOfOutputs = 4;
     //3 things it can do:
     //    1) output a/v signal
+    void outputAVSignal();
     //    2) cycle RGB display
+    int cycleRGBDisplay(); //increments current display cycle
     //    3) adjust fan speed
+    void adjustFanSpeed(int speed);
 };
 /*
 Thing 10) Computer
@@ -741,8 +768,11 @@ CoolingSystem myCoolingSystem;
 GPU myGPU;
     //3 things it can do:
     //    1) run program
+    void runProgram();
     //    2) allocate RAM
+    void allocateRAM();
     //    3) refresh display
+    void refreshDisplay();
 };
 /*
 =================
