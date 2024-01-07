@@ -448,10 +448,15 @@ struct Guitar
 {
     //5 properties:
     //    1) make/model (std::string)
+    std::string makeModel = "Fender Telecaster";
     //    2) number of strings (int)
+    int numberOfStrings = 6;
     //    3) number of pickups (int)
+    int numberOfPickups = 2;
     //    4) acoustic/electric/nylon (std::string)
+    std::string acousticElectricNylon = "Electric";
     //    5) active pickups yes/no (bool)
+    bool activePickups = false;
     //3 things it can do:
     //    1) emit note
     //    2) feedback
@@ -475,10 +480,15 @@ struct Oven
 {
     //5 properties:
     //    1) number of burners on the stovetop (int)
+    int numberOfBurners = 4;
     //    2) glass top, coil, gas (std::string)
+    std::string glassCoilGas = "Gas";
     //    3) rate of temperature increase (float)
+    float rateOfTemperatureIncrease = 16.5f;
     //    4) cubic feet of interior (float)
+    float cubicFeetOfInterior = 9.8f;
     //    5) self cleaning (bool)
+    bool selfCleaning = true;
     //3 things it can do:
     //    1) heats to desired temperature
     //    2) alert timer expired
@@ -502,10 +512,15 @@ struct Book
 {
     //5 properties:
     //    1) height (float)
+    float height = 7.9f;
     //    2) width (float)
+    float width = 5.5f;
     //    3) hardcover yes/no (bool)
+    bool hardcover = false;
     //    4) number of pages (int)
+    int numberOfPages = 350;
     //    5) author (std::string)
+    std::string author = "Kieth, Sam";
     //3 things it can do:
     //    1) display next page
     //    2) display previous page
@@ -529,10 +544,15 @@ struct Bird
 {
     //5 properties:
     //    1) height (float)
+    float height = 7.0f;
     //    2) altitude (float)
+    float altitude = 4800.0f;
     //    3) wingspan (float)
+    float wingspan = 15.0f;
     //    4) type (string)
+    std::string type = "pigeon";
     //    5) gender (bool)
+    bool isMale = true;
     //3 things it can do:
     //    1) fly
     //    2) sing
@@ -555,10 +575,15 @@ struct CPU
 {
     //5 properties:
     //    1) manufacturer (std::string)
+    std::string manufacturer = "AMD";
     //    2) temperature (float)
+    float temperature = 55.5f;
     //    3) clock speed (float)
+    float clockSpeed = 3.5f;
     //    4) cores (int)
+    int cores = 6;
     //    5) socket size (std::string)
+    std::string socket = "AM4";
     //3 things it can do:
     //    1) store data
     //    2) output results
@@ -581,10 +606,15 @@ struct Motherboard
 {
     //5 properties:
     //    1) manufacturer (std::string)
+    std::string manufacturer = "Gigabyte";
     //    2) wireless LAN capability (bool)
+    bool wirelessLAN = false;
     //    3) number of m.2 slots (int)
-    //    4) number of expansion slots (int)
+    int m2Slots = 2;
+    //    4) number of expansion slots (int
+    int expansionSlots = 4;
     //    5) max RAM capacity (int)
+    int maxRAM = 64;
     //3 things it can do:
     //    1) transmit data to RAM
     //    2) generate A/V signals
@@ -607,10 +637,15 @@ struct KeyboardAndMouse
 {
     //5 properties:
     //    1) number of mouse buttons (int)
+    int numberOfMouseButtons = 3;
     //    2) keyboard style chiclet/mechanical (bool)
+    bool mechanicalStyle = false;
     //    3) wireless yes/no (bool)
+    bool wireless = true;
     //    4) language setting (std::string)
+    std::string language = "English";
     //    5) numpad yes/no (bool)
+    bool numpad = false;
     //3 things it can do:
     //    1) transmit keystroke data
     //    2) transmit mouse XY change
@@ -633,10 +668,15 @@ struct CoolingSystem
 {
     //5 properties:
     //    1) liquid yes/no (bool)
+    bool liquid = false;
     //    2) number of rgb lights (int)
+    int numberOfRGB = 5;
     //    3) number of fans (int)
+    int numberOfFans = 3;
     //    4) fan setting (int)
+    int fanSetting = 2;
     //    5) molex power connector yes/no (bool)
+    bool molex = false;
     //3 things it can do:
     //    1) set fan speed
     //    2) set light color
@@ -659,10 +699,15 @@ struct GPU
 {
     //5 properties:
     //    1) intel/nvidia (bool)
+    bool intel = false;
     //    2) amount of ram (int)
+    int ram = 8;
     //    3) clock speed (float)
+    float clockSpeed = 1525.f;
     //    4) number of fans (int)
+    int numberOfFans = 3;
     //    5) number of outputs (int)
+    int numberOfOutputs = 4;
     //3 things it can do:
     //    1) output a/v signal
     //    2) cycle RGB display
@@ -685,10 +730,15 @@ struct Computer
 {
     //5 properties:
     //    1) CPU
+CPU myCPU;
     //    2) motherboard
+Motherboard myMotherboard;
     //    3) keyboard and mouse
+KeyboardAndMouse myKeyboardAndMouse;
     //    4) cooling system
+CoolingSystem myCoolingSystem;
     //    5) GPU
+GPU myGPU;
     //3 things it can do:
     //    1) run program
     //    2) allocate RAM
