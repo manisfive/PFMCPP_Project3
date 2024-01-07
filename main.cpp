@@ -446,7 +446,16 @@ Thing 1) guitar
 */
 struct Guitar
 {
-
+    //5 properties:
+    //    1) make/model (std::string)
+    //    2) number of strings (int)
+    //    3) number of pickups (int)
+    //    4) acoustic/electric/nylon (std::string)
+    //    5) active pickups yes/no (bool)
+    //3 things it can do:
+    //    1) emit note
+    //    2) feedback
+    //    3) detach from strap
 };
 
 /*        
@@ -464,7 +473,16 @@ Thing 2) Oven
 */
 struct Oven
 {
-    
+    //5 properties:
+    //    1) number of burners on the stovetop (int)
+    //    2) glass top, coil, gas (std::string)
+    //    3) rate of temperature increase (float)
+    //    4) cubic feet of interior (float)
+    //    5) self cleaning (bool)
+    //3 things it can do:
+    //    1) heats to desired temperature
+    //    2) alert timer expired
+    //    3) self-clean
 };
 
 /*
@@ -482,7 +500,16 @@ Thing 3) book
 */
 struct Book
 {
-
+    //5 properties:
+    //    1) height (float)
+    //    2) width (float)
+    //    3) hardcover yes/no (bool)
+    //    4) number of pages (int)
+    //    5) author (std::string)
+    //3 things it can do:
+    //    1) display next page
+    //    2) display previous page
+    //    3) increment progress from white to yellow
 };
 
 /*
@@ -500,7 +527,16 @@ Thing 4) bird
 */
 struct Bird
 {
-
+    //5 properties:
+    //    1) height (float)
+    //    2) altitude (float)
+    //    3) wingspan (float)
+    //    4) type (string)
+    //    5) gender (bool)
+    //3 things it can do:
+    //    1) fly
+    //    2) sing
+    //    3) eat
 };
 /*
 Thing 5) CPU
@@ -517,7 +553,16 @@ Thing 5) CPU
 */
 struct CPU
 {
-
+    //5 properties:
+    //    1) manufacturer (std::string)
+    //    2) temperature (float)
+    //    3) clock speed (float)
+    //    4) cores (int)
+    //    5) socket size (std::string)
+    //3 things it can do:
+    //    1) store data
+    //    2) output results
+    //    3) compute
 };
 /*
 Thing 6) motherboard
@@ -534,7 +579,16 @@ Thing 6) motherboard
 */
 struct Motherboard
 {
-
+    //5 properties:
+    //    1) manufacturer (std::string)
+    //    2) wireless LAN capability (bool)
+    //    3) number of m.2 slots (int)
+    //    4) number of expansion slots (int)
+    //    5) max RAM capacity (int)
+    //3 things it can do:
+    //    1) transmit data to RAM
+    //    2) generate A/V signals
+    //    3) auto suspend
 };
 /*
 Thing 7) keyboard and mouse
@@ -551,7 +605,16 @@ Thing 7) keyboard and mouse
 */
 struct KeyboardAndMouse
 {
-
+    //5 properties:
+    //    1) number of mouse buttons (int)
+    //    2) keyboard style chiclet/mechanical (bool)
+    //    3) wireless yes/no (bool)
+    //    4) language setting (std::string)
+    //    5) numpad yes/no (bool)
+    //3 things it can do:
+    //    1) transmit keystroke data
+    //    2) transmit mouse XY change
+    //    3) toggle status light (like capslock)
 };
 /*
 Thing 8) cooling system
@@ -568,7 +631,16 @@ Thing 8) cooling system
 */
 struct CoolingSystem
 {
-
+    //5 properties:
+    //    1) liquid yes/no (bool)
+    //    2) number of rgb lights (int)
+    //    3) number of fans (int)
+    //    4) fan setting (int)
+    //    5) molex power connector yes/no (bool)
+    //3 things it can do:
+    //    1) set fan speed
+    //    2) set light color
+    //    3) spring a leak
 };
 /*
 Thing 9) GPU
@@ -585,7 +657,16 @@ Thing 9) GPU
 */
 struct GPU
 {
-
+    //5 properties:
+    //    1) intel/nvidia (bool)
+    //    2) amount of ram (int)
+    //    3) clock speed (float)
+    //    4) number of fans (int)
+    //    5) number of outputs (int)
+    //3 things it can do:
+    //    1) output a/v signal
+    //    2) cycle RGB display
+    //    3) adjust fan speed
 };
 /*
 Thing 10) Computer
@@ -602,7 +683,16 @@ Thing 10) Computer
 */
 struct Computer
 {
-
+    //5 properties:
+    //    1) CPU
+    //    2) motherboard
+    //    3) keyboard and mouse
+    //    4) cooling system
+    //    5) GPU
+    //3 things it can do:
+    //    1) run program
+    //    2) allocate RAM
+    //    3) refresh display
 };
 /*
 =================
