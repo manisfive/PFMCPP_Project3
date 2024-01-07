@@ -431,6 +431,7 @@ MOVE THEM to the space below this block comment and put them in numerical order
     simply CUT and PASTE them in the space provided below:
 */
 
+/*
 Thing 1) guitar
 5 properties:
     1) make/model (std::string)
@@ -442,7 +443,13 @@ Thing 1) guitar
     1) emit note
     2) feedback
     3) detach from strap
+*/
+struct Guitar
+{
 
+};
+
+/*        
 Thing 2) Oven
 5 properties:
     1) number of burners on the stovetop (int)
@@ -454,7 +461,13 @@ Thing 2) Oven
     1) heats to desired temperature
     2) alert timer expired
     3) self-clean
+*/
+struct Oven
+{
+    
+};
 
+/*
 Thing 3) book
 5 properties:
     1) height (float)
@@ -466,7 +479,13 @@ Thing 3) book
     1) display next page
     2) display previous page
     3) increment progress from white to yellow
+*/
+struct Book
+{
 
+};
+
+/*
 Thing 4) bird
 5 properties:
     1) height (float)
@@ -478,6 +497,12 @@ Thing 4) bird
     1) fly
     2) sing
     3) eat
+*/
+struct Bird
+{
+
+};
+/*
 Thing 5) CPU
 5 properties:
     1) manufacturer (std::string)
@@ -489,7 +514,12 @@ Thing 5) CPU
     1) store data
     2) output results
     3) compute
+*/
+struct CPU
+{
 
+};
+/*
 Thing 6) motherboard
 5 properties:
     1) manufacturer (std::string)
@@ -501,7 +531,12 @@ Thing 6) motherboard
     1) transmit data to RAM
     2) generate A/V signals
     3) auto suspend
+*/
+struct Motherboard
+{
 
+};
+/*
 Thing 7) keyboard and mouse
 5 properties:
     1) number of mouse buttons (int)
@@ -513,7 +548,12 @@ Thing 7) keyboard and mouse
     1) transmit keystroke data
     2) transmit mouse XY change
     3) toggle status light (like capslock)
+*/
+struct KeyboardAndMouse
+{
 
+};
+/*
 Thing 8) cooling system
 5 properties:
     1) liquid yes/no (bool)
@@ -525,7 +565,12 @@ Thing 8) cooling system
     1) set fan speed
     2) set light color
     3) spring a leak
+*/
+struct CoolingSystem
+{
 
+};
+/*
 Thing 9) GPU
 5 properties:
     1) intel/nvidia (bool)
@@ -537,7 +582,12 @@ Thing 9) GPU
     1) output a/v signal
     2) cycle RGB display
     3) adjust fan speed
+*/
+struct GPU
+{
 
+};
+/*
 Thing 10) Computer
 5 properties:
     1) CPU
@@ -549,7 +599,11 @@ Thing 10) Computer
     1) run program
     2) allocate RAM
     3) refresh display
-    
+*/
+struct Computer
+{
+
+};
 /*
 =================
 Part 1d - Step 7: Commit
