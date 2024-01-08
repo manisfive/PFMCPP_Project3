@@ -465,6 +465,7 @@ struct Guitar
         std::string material = "Nickel wound";
         bool flatwound = false;
         bool coated = false;
+        std::string tuningOpen = "E4";
 
         float bend(int whichString, float distance = 0.0f); //adds pitchbend to emitNote() based on added tension
         float degrade(float time, std::string material = "Nickel wound", bool coated = false); //lowers frequency value on a lowpass filter based on style of string
@@ -473,7 +474,7 @@ struct Guitar
 
     //3 things it can do:
     //    1) emit note
-    int emitNote(std::string noteValue); //midi note number
+    int emitNote(GuitarString string, int fret = 0); //midi note number
     //    2) feedback
     void feedback();
     //    3) detach from strap
@@ -597,6 +598,7 @@ struct Bird
     void sing();
     //    3) eat
     float eat(std::string target); //input what's being eaten, ouput new total weight
+    std::string forage(Progeny progeny);//makes appropriate food available to progeny to eat based on percentToMaturity
 };
 /*
 Thing 5) CPU
