@@ -444,42 +444,6 @@ Thing 1) guitar
     2) feedback
     3) detach from strap
 */
-struct Guitar
-{
-    //5 properties:
-    //    1) make/model (std::string)
-    std::string makeModel = "Fender Telecaster";
-    //    2) number of strings (int)
-    int numberOfStrings = 6;
-    //    3) number of pickups (int)
-    int numberOfPickups = 2;
-    //    4) acoustic/electric/nylon (std::string)
-    std::string acousticElectricNylon = "Electric";
-    //    5) active pickups yes/no (bool)
-    bool activePickups = false;
-    
-    struct GuitarString
-    {
-        std::string brand = "D'addario";
-        int gauge = 10;
-        std::string material = "Nickel wound";
-        bool flatwound = false;
-        bool coated = false;
-        std::string tuningOpen = "E4";
-
-        float bend(int whichString, float distance = 0.0f); //adds pitchbend to emitNote() based on added tension
-        float degrade(float time, std::string material = "Nickel wound", bool coated = false); //lowers frequency value on a lowpass filter based on style of string
-        void snap();
-    };
-
-    //3 things it can do:
-    //    1) emit note
-    int emitNote(GuitarString string, int fret = 0); //midi note number
-    //    2) feedback
-    void feedback();
-    //    3) detach from strap
-    void detachFromStrap();
-};
 
 /*        
 Thing 2) Oven
@@ -494,27 +458,6 @@ Thing 2) Oven
     2) alert timer expired
     3) self-clean
 */
-struct Oven
-{
-    //5 properties:
-    //    1) number of burners on the stovetop (int)
-    int numberOfBurners = 4;
-    //    2) glass top, coil, gas (std::string)
-    std::string glassCoilGas = "Gas";
-    //    3) rate of temperature increase (float)
-    float rateOfTemperatureIncrease = 16.5f;
-    //    4) cubic feet of interior (float)
-    float cubicFeetOfInterior = 9.8f;
-    //    5) self cleaning (bool)
-    bool selfCleaning = true;
-    //3 things it can do:
-    //    1) heats to desired temperature
-    void heatToDesiredTemperature(float temp);
-    //    2) alert timer expired
-    bool alertTimerExpired(int time); //input seconds until true, returns alarmSounds == true
-    //    3) self-clean
-    void selfClean();
-};
 
 /*
 Thing 3) book
@@ -529,27 +472,6 @@ Thing 3) book
     2) display previous page
     3) increment progress from white to yellow
 */
-struct Book
-{
-    //5 properties:
-    //    1) height (float)
-    float height = 7.9f;
-    //    2) width (float)
-    float width = 5.5f;
-    //    3) hardcover yes/no (bool)
-    bool hardcover = false;
-    //    4) number of pages (int)
-    int numberOfPages = 350;
-    //    5) author (std::string)
-    std::string author = "Kieth, Sam";
-    //3 things it can do:
-    //    1) display next page
-    int displayNextPage(); //new page number
-    //    2) display previous page
-    int displayPreviousPage(); //new page number
-    //    3) increment progress from white to yellow
-    float whiteToYellowProgress(float amount); //input percent yellowed, output total percentage
-};
 
 /*
 Thing 4) bird
@@ -564,42 +486,7 @@ Thing 4) bird
     2) sing
     3) eat
 */
-struct Bird
-{
-    //5 properties:
-    //    1) height (float)
-    float height = 7.0f;
-    //    2) altitude (float)
-    float altitude = 4800.0f;
-    //    3) wingspan (float)
-    float wingspan = 15.0f;
-    //    4) type (string)
-    std::string type = "pigeon";
-    //    5) gender (bool)
-    bool isMale = true;
 
-    struct Progeny
-    {
-        bool stillEgg = true;
-        float percentToMaturity = 0.0f;
-        float satedLevel = 0.0f;
-        bool canFly = false;
-        bool canForage = false;
-
-        float flyTheNest(float maturePercent, float satedPercent);// returns a liklihood that a fledgling will successfully make it off and become a new Bird, or no effect, or die
-        float eat(float maturePercent, std::string target); //returns an amount to increment percentToMaturity
-        float chirp(bool parentPresent, float location, float timeOfDay);//retrns a liklihood that chirp will have no effect, attract parents' attention, attrect predator attention
-    };
-
-    //3 things it can do:
-    //    1) fly
-    float fly(float x, float y); //input target coordinates, output travel time
-    //    2) sing
-    void sing();
-    //    3) eat
-    float eat(std::string target); //input what's being eaten, ouput new total weight
-    std::string forage(Progeny progeny);//makes appropriate food available to progeny to eat based on percentToMaturity
-};
 /*
 Thing 5) CPU
 5 properties:
@@ -613,27 +500,7 @@ Thing 5) CPU
     2) output results
     3) compute
 */
-struct CPU
-{
-    //5 properties:
-    //    1) manufacturer (std::string)
-    std::string manufacturer = "AMD";
-    //    2) temperature (float)
-    float temperature = 55.5f;
-    //    3) clock speed (float)
-    float clockSpeed = 3.5f;
-    //    4) cores (int)
-    int cores = 6;
-    //    5) socket size (std::string)
-    std::string socket = "AM4";
-    //3 things it can do:
-    //    1) store data
-    float storeData(); //returns stored values
-    //    2) output results
-    float outputResults(); //returns current values
-    //    3) compute
-    float compute(float x, float y);//returns result of operations on inputs
-};
+
 /*
 Thing 6) motherboard
 5 properties:
@@ -647,27 +514,7 @@ Thing 6) motherboard
     2) generate A/V signals
     3) auto suspend
 */
-struct Motherboard
-{
-    //5 properties:
-    //    1) manufacturer (std::string)
-    std::string manufacturer = "Gigabyte";
-    //    2) wireless LAN capability (bool)
-    bool wirelessLAN = false;
-    //    3) number of m.2 slots (int)
-    int m2Slots = 2;
-    //    4) number of expansion slots (int
-    int expansionSlots = 4;
-    //    5) max RAM capacity (int)
-    int maxRAM = 64;
-    //3 things it can do:
-    //    1) transmit data to RAM
-    void dataToRAM();
-    //    2) generate A/V signals
-    void generateAVSignals();
-    //    3) auto suspend
-    void autoSuspend();
-};
+
 /*
 Thing 7) keyboard and mouse
 5 properties:
@@ -681,27 +528,7 @@ Thing 7) keyboard and mouse
     2) transmit mouse XY change
     3) toggle status light (like capslock)
 */
-struct KeyboardAndMouse
-{
-    //5 properties:
-    //    1) number of mouse buttons (int)
-    int numberOfMouseButtons = 3;
-    //    2) keyboard style chiclet/mechanical (bool)
-    bool mechanicalStyle = false;
-    //    3) wireless yes/no (bool)
-    bool wireless = true;
-    //    4) language setting (std::string)
-    std::string language = "English";
-    //    5) numpad yes/no (bool)
-    bool numpad = false;
-    //3 things it can do:
-    //    1) transmit keystroke data
-    int transmitKeystrokeData(); //returns ASCII value
-    //    2) transmit mouse XY change
-    float transmitXYChange(); //returns distance from a 0,0 position, which refreshes periodically
-    //    3) toggle status light (like capslock)
-    bool toggleStatus(std::string status);//in which indicator to toggle, out isLit true or false
-};
+
 /*
 Thing 8) cooling system
 5 properties:
@@ -715,27 +542,7 @@ Thing 8) cooling system
     2) set light color
     3) spring a leak
 */
-struct CoolingSystem
-{
-    //5 properties:
-    //    1) liquid yes/no (bool)
-    bool liquid = false;
-    //    2) number of rgb lights (int)
-    int numberOfRGB = 5;
-    //    3) number of fans (int)
-    int numberOfFans = 3;
-    //    4) fan setting (int)
-    int fanSetting = 2;
-    //    5) molex power connector yes/no (bool)
-    bool molex = false;
-    //3 things it can do:
-    //    1) set fan speed
-    void setFanSpeed(int speed);
-    //    2) set light color    
-    void setLightColor(std::string color);
-    //    3) spring a leak
-    void springALeak();
-};
+
 /*
 Thing 9) GPU
 5 properties:
@@ -749,27 +556,7 @@ Thing 9) GPU
     2) cycle RGB display
     3) adjust fan speed
 */
-struct GPU
-{
-    //5 properties:
-    //    1) intel/nvidia (bool)
-    bool intel = false;
-    //    2) amount of ram (int)
-    int ram = 8;
-    //    3) clock speed (float)
-    float clockSpeed = 1525.f;
-    //    4) number of fans (int)
-    int numberOfFans = 3;
-    //    5) number of outputs (int)
-    int numberOfOutputs = 4;
-    //3 things it can do:
-    //    1) output a/v signal
-    void outputAVSignal();
-    //    2) cycle RGB display
-    int cycleRGBDisplay(); //increments current display cycle
-    //    3) adjust fan speed
-    void adjustFanSpeed(int speed);
-};
+
 /*
 Thing 10) Computer
 5 properties:
@@ -783,27 +570,7 @@ Thing 10) Computer
     2) allocate RAM
     3) refresh display
 */
-struct Computer
-{
-    //5 properties:
-    //    1) CPU
-CPU myCPU;
-    //    2) motherboard
-Motherboard myMotherboard;
-    //    3) keyboard and mouse
-KeyboardAndMouse myKeyboardAndMouse;
-    //    4) cooling system
-CoolingSystem myCoolingSystem;
-    //    5) GPU
-GPU myGPU;
-    //3 things it can do:
-    //    1) run program
-    void runProgram();
-    //    2) allocate RAM
-    void allocateRAM();
-    //    3) refresh display
-    void refreshDisplay();
-};
+
 /*
 =================
 Part 1d - Step 7: Commit
@@ -1262,13 +1029,255 @@ Part 1e - Step 19: Request a review
 paste your code below
 */
 
+struct Guitar
+{
+    //5 properties:
+    //    1) make/model (std::string)
+    std::string makeModel = "Fender Telecaster";
+    //    2) number of strings (int)
+    int numberOfStrings = 6;
+    //    3) number of pickups (int)
+    int numberOfPickups = 2;
+    //    4) acoustic/electric/nylon (std::string)
+    std::string acousticElectricNylon = "Electric";
+    //    5) active pickups yes/no (bool)
+    bool activePickups = false;
 
+    struct GuitarString
+    {
+        std::string brand = "D'addario";
+        int gauge = 10;
+        std::string material = "Nickel wound";
+        bool flatwound = false;
+        bool coated = false;
+        std::string tuningOpen = "E4";
 
+        float bend(int whichString, float distance = 0.0f); //adds pitchbend to emitNote() based on added tension
+        float degrade(float time, std::string material = "Nickel wound", bool coated = false); //lowers frequency value on a lowpass filter based on style of string
+        void snap();
+    };
 
+    //3 things it can do:
+    //    1) emit note
+    int emitNote(GuitarString string, int fret = 0); //midi note number
+    //    2) feedback
+    void feedback();
+    //    3) detach from strap
+    void detachFromStrap();
+};
 
+struct Oven
+{
+    //5 properties:
+    //    1) number of burners on the stovetop (int)
+    int numberOfBurners = 4;
+    //    2) glass top, coil, gas (std::string)
+    std::string glassCoilGas = "Gas";
+    //    3) rate of temperature increase (float)
+    float rateOfTemperatureIncrease = 16.5f;
+    //    4) cubic feet of interior (float)
+    float cubicFeetOfInterior = 9.8f;
+    //    5) self cleaning (bool)
+    bool selfCleaning = true;
+    //3 things it can do:
+    //    1) heats to desired temperature
+    void heatToDesiredTemperature(float temp);
+    //    2) alert timer expired
+    bool alertTimerExpired(int time); //input seconds until true, returns alarmSounds == true
+    //    3) self-clean
+    void selfClean();
+};
 
+struct Book
+{
+    //5 properties:
+    //    1) height (float)
+    float height = 7.9f;
+    //    2) width (float)
+    float width = 5.5f;
+    //    3) hardcover yes/no (bool)
+    bool hardcover = false;
+    //    4) number of pages (int)
+    int numberOfPages = 350;
+    //    5) author (std::string)
+    std::string author = "Kieth, Sam";
+    //3 things it can do:
+    //    1) display next page
+    int displayNextPage(); //new page number
+    //    2) display previous page
+    int displayPreviousPage(); //new page number
+    //    3) increment progress from white to yellow
+    float whiteToYellowProgress(float amount); //input percent yellowed, output total percentage
+};
 
+struct Bird
+{
+    //5 properties:
+    //    1) height (float)
+    float height = 7.0f;
+    //    2) altitude (float)
+    float altitude = 4800.0f;
+    //    3) wingspan (float)
+    float wingspan = 15.0f;
+    //    4) type (string)
+    std::string type = "pigeon";
+    //    5) gender (bool)
+    bool isMale = true;
 
+    struct Progeny
+    {
+        bool stillEgg = true;
+        float percentToMaturity = 0.0f;
+        float satedLevel = 0.0f;
+        bool canFly = false;
+        bool canForage = false;
+
+        float flyTheNest(float maturePercent, float satedPercent);// returns a liklihood that a fledgling will successfully make it off and become a new Bird, or no effect, or die
+        float eat(float maturePercent, std::string target); //returns an amount to increment percentToMaturity
+        float chirp(bool parentPresent, float location, float timeOfDay);//retrns a liklihood that chirp will have no effect, attract parents' attention, attrect predator attention
+    };
+
+    //3 things it can do:
+    //    1) fly
+    float fly(float x, float y); //input target coordinates, output travel time
+    //    2) sing
+    void sing();
+    //    3) eat
+    float eat(std::string target); //input what's being eaten, ouput new total weight
+    std::string forage(Progeny progeny);//makes appropriate food available to progeny to eat based on percentToMaturity
+};
+
+struct CPU
+{
+    //5 properties:
+    //    1) manufacturer (std::string)
+    std::string manufacturer = "AMD";
+    //    2) temperature (float)
+    float temperature = 55.5f;
+    //    3) clock speed (float)
+    float clockSpeed = 3.5f;
+    //    4) cores (int)
+    int cores = 6;
+    //    5) socket size (std::string)
+    std::string socket = "AM4";
+    //3 things it can do:
+    //    1) store data
+    float storeData(); //returns stored values
+    //    2) output results
+    float outputResults(); //returns current values
+    //    3) compute
+    float compute(float x, float y);//returns result of operations on inputs
+};
+
+struct Motherboard
+{
+    //5 properties:
+    //    1) manufacturer (std::string)
+    std::string manufacturer = "Gigabyte";
+    //    2) wireless LAN capability (bool)
+    bool wirelessLAN = false;
+    //    3) number of m.2 slots (int)
+    int m2Slots = 2;
+    //    4) number of expansion slots (int
+    int expansionSlots = 4;
+    //    5) max RAM capacity (int)
+    int maxRAM = 64;
+    //3 things it can do:
+    //    1) transmit data to RAM
+    void dataToRAM();
+    //    2) generate A/V signals
+    void generateAVSignals();
+    //    3) auto suspend
+    void autoSuspend();
+};
+
+struct KeyboardAndMouse
+{
+    //5 properties:
+    //    1) number of mouse buttons (int)
+    int numberOfMouseButtons = 3;
+    //    2) keyboard style chiclet/mechanical (bool)
+    bool mechanicalStyle = false;
+    //    3) wireless yes/no (bool)
+    bool wireless = true;
+    //    4) language setting (std::string)
+    std::string language = "English";
+    //    5) numpad yes/no (bool)
+    bool numpad = false;
+    //3 things it can do:
+    //    1) transmit keystroke data
+    int transmitKeystrokeData(); //returns ASCII value
+    //    2) transmit mouse XY change
+    float transmitXYChange(); //returns distance from a 0,0 position, which refreshes periodically
+    //    3) toggle status light (like capslock)
+    bool toggleStatus(std::string status);//in which indicator to toggle, out isLit true or false
+};
+
+struct CoolingSystem
+{
+    //5 properties:
+    //    1) liquid yes/no (bool)
+    bool liquid = false;
+    //    2) number of rgb lights (int)
+    int numberOfRGB = 5;
+    //    3) number of fans (int)
+    int numberOfFans = 3;
+    //    4) fan setting (int)
+    int fanSetting = 2;
+    //    5) molex power connector yes/no (bool)
+    bool molex = false;
+    //3 things it can do:
+    //    1) set fan speed
+    void setFanSpeed(int speed);
+    //    2) set light color    
+    void setLightColor(std::string color);
+    //    3) spring a leak
+    void springALeak();
+};
+
+struct GPU
+{
+    //5 properties:
+    //    1) intel/nvidia (bool)
+    bool intel = false;
+    //    2) amount of ram (int)
+    int ram = 8;
+    //    3) clock speed (float)
+    float clockSpeed = 1525.f;
+    //    4) number of fans (int)
+    int numberOfFans = 3;
+    //    5) number of outputs (int)
+    int numberOfOutputs = 4;
+    //3 things it can do:
+    //    1) output a/v signal
+    void outputAVSignal();
+    //    2) cycle RGB display
+    int cycleRGBDisplay(); //increments current display cycle
+    //    3) adjust fan speed
+    void adjustFanSpeed(int speed);
+};
+
+struct Computer
+{
+    //5 properties:
+    //    1) CPU
+CPU myCPU;
+    //    2) motherboard
+Motherboard myMotherboard;
+    //    3) keyboard and mouse
+KeyboardAndMouse myKeyboardAndMouse;
+    //    4) cooling system
+CoolingSystem myCoolingSystem;
+    //    5) GPU
+GPU myGPU;
+    //3 things it can do:
+    //    1) run program
+    void runProgram();
+    //    2) allocate RAM
+    void allocateRAM();
+    //    3) refresh display
+    void refreshDisplay();
+};
 
 int main()
 {
