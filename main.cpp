@@ -1261,15 +1261,15 @@ struct Computer
 {
     //5 properties:
     //    1) CPU
-CPU myCPU;
+    CPU myCPU;
     //    2) motherboard
-Motherboard myMotherboard;
+    Motherboard myMotherboard;
     //    3) keyboard and mouse
-KeyboardAndMouse myKeyboardAndMouse;
+    KeyboardAndMouse myKeyboardAndMouse;
     //    4) cooling system
-CoolingSystem myCoolingSystem;
+    CoolingSystem myCoolingSystem;
     //    5) GPU
-GPU myGPU;
+    GPU myGPU;
     //3 things it can do:
     //    1) run program
     void runProgram();
