@@ -457,6 +457,20 @@ struct Guitar
     std::string acousticElectricNylon = "Electric";
     //    5) active pickups yes/no (bool)
     bool activePickups = false;
+    
+    struct GuitarString
+    {
+        std::string brand = "D'addario";
+        int gauge = 10;
+        std::string material = "Nickel wound";
+        bool flatwound = false;
+        bool coated = false;
+
+        float bend(int whichString, float distance = 0.0f); //adds pitchbend to emitNote() based on added tension
+        float degrade(float time, std::string material = "Nickel wound", bool coated = false); //lowers frequency value on a lowpass filter based on style of string
+        void snap();
+    };
+
     //3 things it can do:
     //    1) emit note
     int emitNote(std::string noteValue); //midi note number
@@ -562,6 +576,20 @@ struct Bird
     std::string type = "pigeon";
     //    5) gender (bool)
     bool isMale = true;
+
+    struct Progeny
+    {
+        bool stillEgg = true;
+        float percentToMaturity = 0.0f;
+        float satedLevel = 0.0f;
+        bool canFly = false;
+        bool canForage = false;
+
+        float flyTheNest(float maturePercent, float satedPercent);// returns a liklihood that a fledgling will successfully make it off and become a new Bird, or no effect, or die
+        float eat(float maturePercent, std::string target); //returns an amount to increment percentToMaturity
+        float chirp(bool parentPresent, float location, float timeOfDay);//retrns a liklihood that chirp will have no effect, attract parents' attention, attrect predator attention
+    };
+
     //3 things it can do:
     //    1) fly
     float fly(float x, float y); //input target coordinates, output travel time
