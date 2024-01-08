@@ -83,51 +83,51 @@ Main Object: Car Interior
         Name 4 nouns you'll find on the [Sub Object]
             1) paddle shifters
             2) 'cruise control' controls
-            3) 
-            4) 
+            3) phonecall controls
+            4) horn
         Name 2 actions that the [Sub Object] can do:
             1) adjust cruise control settings.
-            2)
+            2) honk horn
         
     Sub Object: Instrument Cluster
         Name 4 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
-            4)
+            1) gear indicator
+            2) speedometer
+            3) tachometer
+            4) engine temperature
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) display current gear
+            2) display current miles per hour
+            3) display current RPM
     
     Sub Object: Environment Controls
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) temperature control
+            2) A/C toggle
+            3) windshield defrost toggle
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) set desired temperature
+            2) enable or disable A/C
+            3) enable or disable windshield fan
 
     Sub Object: Infotainment System
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) power button
+            2) seek buttons
+            3) num pad
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) turn radio on
+            2) make a phone call
+            3) change radio station
 
     Sub Object: Seat 
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) head rest
+            2) seat cushion
+            3) back panel
         Name 2 actions that the [Sub Object] can do:
-            1)
-            2)
+            1) adjust back panel angle
+            2) adjust head rest position
 */
 
 /*
@@ -196,53 +196,7 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-Thing 1)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
 
-Thing 2)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 3)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 4)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
 */
 
 /*
@@ -337,17 +291,7 @@ Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
 
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
+
  */
 
  /*
@@ -434,65 +378,7 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
 
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
  */
 
 /*
@@ -545,12 +431,145 @@ MOVE THEM to the space below this block comment and put them in numerical order
     simply CUT and PASTE them in the space provided below:
 */
 
+/*
+Thing 1) guitar
+5 properties:
+    1) make/model (std::string)
+    2) number of strings (int)
+    3) number of pickups (int)
+    4) acoustic/electric/nylon (std::string)
+    5) active pickups yes/no (bool)
+3 things it can do:
+    1) emit note
+    2) feedback
+    3) detach from strap
+*/
 
+/*        
+Thing 2) Oven
+5 properties:
+    1) number of burners on the stovetop (int)
+    2) glass top, coil, gas (std::string)
+    3) rate of temperature increase (float)
+    4) cubic feet of interior (float)
+    5) self cleaning (bool)
+3 things it can do:
+    1) heats to desired temperature
+    2) alert timer expired
+    3) self-clean
+*/
 
+/*
+Thing 3) book
+5 properties:
+    1) height (float)
+    2) width (float)
+    3) hardcover yes/no (bool)
+    4) number of pages (int)
+    5) author (std::string)
+3 things it can do:
+    1) display next page
+    2) display previous page
+    3) increment progress from white to yellow
+*/
 
+/*
+Thing 4) bird
+5 properties:
+    1) height (float)
+    2) altitude (float)
+    3) wingspan (float)
+    4) type (string)
+    5) gender (bool)
+3 things it can do:
+    1) fly
+    2) sing
+    3) eat
+*/
 
+/*
+Thing 5) CPU
+5 properties:
+    1) manufacturer (std::string)
+    2) temperature (float)
+    3) clock speed (float)
+    4) cores (int)
+    5) socket size (std::string)
+3 things it can do:
+    1) store data
+    2) output results
+    3) compute
+*/
 
+/*
+Thing 6) motherboard
+5 properties:
+    1) manufacturer (std::string)
+    2) wireless LAN capability (bool)
+    3) number of m.2 slots (int)
+    4) number of expansion slots (int)
+    5) max RAM capacity (int)
+3 things it can do:
+    1) transmit data to RAM
+    2) generate A/V signals
+    3) auto suspend
+*/
 
+/*
+Thing 7) keyboard and mouse
+5 properties:
+    1) number of mouse buttons (int)
+    2) keyboard style chiclet/mechanical (bool)
+    3) wireless yes/no (bool)
+    4) language setting (std::string)
+    5) numpad yes/no (bool)
+3 things it can do:
+    1) transmit keystroke data
+    2) transmit mouse XY change
+    3) toggle status light (like capslock)
+*/
+
+/*
+Thing 8) cooling system
+5 properties:
+    1) liquid yes/no (bool)
+    2) number of rgb lights (int)
+    3) number of fans (int)
+    4) fan setting (int)
+    5) molex power connector yes/no (bool)
+3 things it can do:
+    1) set fan speed
+    2) set light color
+    3) spring a leak
+*/
+
+/*
+Thing 9) GPU
+5 properties:
+    1) intel/nvidia (bool)
+    2) amount of ram (int)
+    3) clock speed (float)
+    4) number of fans (int)
+    5) number of outputs (int)
+3 things it can do:
+    1) output a/v signal
+    2) cycle RGB display
+    3) adjust fan speed
+*/
+
+/*
+Thing 10) Computer
+5 properties:
+    1) CPU
+    2) motherboard
+    3) keyboard and mouse
+    4) cooling system
+    5) GPU
+3 things it can do:
+    1) run program
+    2) allocate RAM
+    3) refresh display
+*/
 
 /*
 =================
@@ -1010,13 +1029,255 @@ Part 1e - Step 19: Request a review
 paste your code below
 */
 
+struct Guitar
+{
+    //5 properties:
+    //    1) make/model (std::string)
+    std::string makeModel = "Fender Telecaster";
+    //    2) number of strings (int)
+    int numberOfStrings = 6;
+    //    3) number of pickups (int)
+    int numberOfPickups = 2;
+    //    4) acoustic/electric/nylon (std::string)
+    std::string acousticElectricNylon = "Electric";
+    //    5) active pickups yes/no (bool)
+    bool activePickups = false;
 
+    struct GuitarString
+    {
+        std::string brand = "D'addario";
+        int gauge = 10;
+        std::string material = "Nickel wound";
+        bool flatwound = false;
+        bool coated = false;
+        std::string tuningOpen = "E4";
 
+        float bend(int whichString, float distance = 0.0f); //adds pitchbend to emitNote() based on added tension
+        float degrade(float time, std::string material = "Nickel wound", bool coated = false); //lowers frequency value on a lowpass filter based on style of string
+        void snap();
+    };
 
+    //3 things it can do:
+    //    1) emit note
+    int emitNote(GuitarString string, int fret = 0); //midi note number
+    //    2) feedback
+    void feedback();
+    //    3) detach from strap
+    void detachFromStrap();
+};
 
+struct Oven
+{
+    //5 properties:
+    //    1) number of burners on the stovetop (int)
+    int numberOfBurners = 4;
+    //    2) glass top, coil, gas (std::string)
+    std::string glassCoilGas = "Gas";
+    //    3) rate of temperature increase (float)
+    float rateOfTemperatureIncrease = 16.5f;
+    //    4) cubic feet of interior (float)
+    float cubicFeetOfInterior = 9.8f;
+    //    5) self cleaning (bool)
+    bool selfCleaning = true;
+    //3 things it can do:
+    //    1) heats to desired temperature
+    void heatToDesiredTemperature(float temp);
+    //    2) alert timer expired
+    bool alertTimerExpired(int time); //input seconds until true, returns alarmSounds == true
+    //    3) self-clean
+    void selfClean();
+};
 
+struct Book
+{
+    //5 properties:
+    //    1) height (float)
+    float height = 7.9f;
+    //    2) width (float)
+    float width = 5.5f;
+    //    3) hardcover yes/no (bool)
+    bool hardcover = false;
+    //    4) number of pages (int)
+    int numberOfPages = 350;
+    //    5) author (std::string)
+    std::string author = "Kieth, Sam";
+    //3 things it can do:
+    //    1) display next page
+    int displayNextPage(); //new page number
+    //    2) display previous page
+    int displayPreviousPage(); //new page number
+    //    3) increment progress from white to yellow
+    float whiteToYellowProgress(float amount); //input percent yellowed, output total percentage
+};
 
+struct Bird
+{
+    //5 properties:
+    //    1) height (float)
+    float height = 7.0f;
+    //    2) altitude (float)
+    float altitude = 4800.0f;
+    //    3) wingspan (float)
+    float wingspan = 15.0f;
+    //    4) type (string)
+    std::string type = "pigeon";
+    //    5) gender (bool)
+    bool isMale = true;
 
+    struct Progeny
+    {
+        bool stillEgg = true;
+        float percentToMaturity = 0.0f;
+        float satedLevel = 0.0f;
+        bool canFly = false;
+        bool canForage = false;
+
+        float flyTheNest(float maturePercent, float satedPercent);// returns a liklihood that a fledgling will successfully make it off and become a new Bird, or no effect, or die
+        float eat(float maturePercent, std::string target); //returns an amount to increment percentToMaturity
+        float chirp(bool parentPresent, float location, float timeOfDay);//retrns a liklihood that chirp will have no effect, attract parents' attention, attrect predator attention
+    };
+
+    //3 things it can do:
+    //    1) fly
+    float fly(float x, float y); //input target coordinates, output travel time
+    //    2) sing
+    void sing();
+    //    3) eat
+    float eat(std::string target); //input what's being eaten, ouput new total weight
+    std::string forage(Progeny progeny);//makes appropriate food available to progeny to eat based on percentToMaturity
+};
+
+struct CPU
+{
+    //5 properties:
+    //    1) manufacturer (std::string)
+    std::string manufacturer = "AMD";
+    //    2) temperature (float)
+    float temperature = 55.5f;
+    //    3) clock speed (float)
+    float clockSpeed = 3.5f;
+    //    4) cores (int)
+    int cores = 6;
+    //    5) socket size (std::string)
+    std::string socket = "AM4";
+    //3 things it can do:
+    //    1) store data
+    float storeData(); //returns stored values
+    //    2) output results
+    float outputResults(); //returns current values
+    //    3) compute
+    float compute(float x, float y);//returns result of operations on inputs
+};
+
+struct Motherboard
+{
+    //5 properties:
+    //    1) manufacturer (std::string)
+    std::string manufacturer = "Gigabyte";
+    //    2) wireless LAN capability (bool)
+    bool wirelessLAN = false;
+    //    3) number of m.2 slots (int)
+    int m2Slots = 2;
+    //    4) number of expansion slots (int
+    int expansionSlots = 4;
+    //    5) max RAM capacity (int)
+    int maxRAM = 64;
+    //3 things it can do:
+    //    1) transmit data to RAM
+    void dataToRAM();
+    //    2) generate A/V signals
+    void generateAVSignals();
+    //    3) auto suspend
+    void autoSuspend();
+};
+
+struct KeyboardAndMouse
+{
+    //5 properties:
+    //    1) number of mouse buttons (int)
+    int numberOfMouseButtons = 3;
+    //    2) keyboard style chiclet/mechanical (bool)
+    bool mechanicalStyle = false;
+    //    3) wireless yes/no (bool)
+    bool wireless = true;
+    //    4) language setting (std::string)
+    std::string language = "English";
+    //    5) numpad yes/no (bool)
+    bool numpad = false;
+    //3 things it can do:
+    //    1) transmit keystroke data
+    int transmitKeystrokeData(); //returns ASCII value
+    //    2) transmit mouse XY change
+    float transmitXYChange(); //returns distance from a 0,0 position, which refreshes periodically
+    //    3) toggle status light (like capslock)
+    bool toggleStatus(std::string status);//in which indicator to toggle, out isLit true or false
+};
+
+struct CoolingSystem
+{
+    //5 properties:
+    //    1) liquid yes/no (bool)
+    bool liquid = false;
+    //    2) number of rgb lights (int)
+    int numberOfRGB = 5;
+    //    3) number of fans (int)
+    int numberOfFans = 3;
+    //    4) fan setting (int)
+    int fanSetting = 2;
+    //    5) molex power connector yes/no (bool)
+    bool molex = false;
+    //3 things it can do:
+    //    1) set fan speed
+    void setFanSpeed(int speed);
+    //    2) set light color    
+    void setLightColor(std::string color);
+    //    3) spring a leak
+    void springALeak();
+};
+
+struct GPU
+{
+    //5 properties:
+    //    1) intel/nvidia (bool)
+    bool intel = false;
+    //    2) amount of ram (int)
+    int ram = 8;
+    //    3) clock speed (float)
+    float clockSpeed = 1525.f;
+    //    4) number of fans (int)
+    int numberOfFans = 3;
+    //    5) number of outputs (int)
+    int numberOfOutputs = 4;
+    //3 things it can do:
+    //    1) output a/v signal
+    void outputAVSignal();
+    //    2) cycle RGB display
+    int cycleRGBDisplay(); //increments current display cycle
+    //    3) adjust fan speed
+    void adjustFanSpeed(int speed);
+};
+
+struct Computer
+{
+    //5 properties:
+    //    1) CPU
+    CPU myCPU;
+    //    2) motherboard
+    Motherboard myMotherboard;
+    //    3) keyboard and mouse
+    KeyboardAndMouse myKeyboardAndMouse;
+    //    4) cooling system
+    CoolingSystem myCoolingSystem;
+    //    5) GPU
+    GPU myGPU;
+    //3 things it can do:
+    //    1) run program
+    void runProgram();
+    //    2) allocate RAM
+    void allocateRAM();
+    //    3) refresh display
+    void refreshDisplay();
+};
 
 int main()
 {
