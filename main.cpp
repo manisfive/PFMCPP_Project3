@@ -149,10 +149,7 @@ int Person::Foot::stepSize()
     {
         return 5;
     }
-    else
-    {
-        return 8;
-    }
+    return 8;  
 }
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
@@ -277,7 +274,7 @@ void Oven::heatToDesiredTemperature(int temp)
     int currentTemp = 70;
     while(currentTemp < temp)
     {
-        currentTemp++;
+        currentTemp += 1;
     }
 }
 
@@ -285,17 +282,11 @@ bool alertTimerExpired(int time)
 {
     while(time >= 0)
     {
-        time--;
+        time -= 1;
     }
-    if(time == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return time == 0;
 }
+
 void Oven::selfClean()
 {
     heatToDesiredTemperature(1000);
@@ -320,7 +311,7 @@ void Book::displayNextPage()
 {
     if(0 <= currentPage < numberOfPages)
     {
-        currentPage++;
+        currentPage += 1;
     }
 }
 
@@ -328,7 +319,7 @@ void Book::displayPreviousPage()
 {
     if(0 < currentPage <= numberOfPages)
     {
-        currentPage--;
+        currentPage -= 1;
     }
 }
 
@@ -454,20 +445,17 @@ struct CPU
 
 float CPU::storeData()
 {
-    float data = 1.43667f * 2.44435f * temperature;
-    return data;
+    return 1.43667f * 2.44435f * temperature;
 }
 
 float CPU::outputResults()
 {
-    float data = 89.667f * .30741f * temperature;
-    return data;
+    return 89.667f * .30741f * temperature;
 }
 
 float CPU::compute(float x, float y)
 {
-    float data = x * y * temperature;
-    return data;
+    return x * y * temperature;
 }
 
 struct Motherboard
@@ -486,12 +474,12 @@ struct Motherboard
 
 void Motherboard::dataToRAM()
 {
-    maxRAM++;
+    maxRAM += 1;
 }
 
 void Motherboard::generateAVSignals()
 {
-    AVSignals++;
+    AVSignals += 1;
 }
 
 void Motherboard::autoSuspend()
@@ -523,16 +511,13 @@ double KeyboardAndMouse::transmitXYChange(double x, double y)
     return sqrt(pow(x, 2.) + pow(y, 2.));
 }
 
-bool toggleStatus(bool status)
+bool KeyboardAndMouse::toggleStatus(bool status)
 {
     if(status == true)
     {
         return false;
     }
-    else
-    {
         return true;
-    }
 }
 
 struct CoolingSystem
@@ -597,14 +582,14 @@ struct GPU
 
 void GPU::outputAVSignal()
 {
-    AVSignals++;
+    AVSignals += 1;
 }
 
 void GPU::cycleRGBDisplay()
 {
     if(currentRGB < 8)
     {
-        currentRGB++;
+        currentRGB += 1;
     }
     else
     {
