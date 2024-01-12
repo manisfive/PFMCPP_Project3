@@ -274,7 +274,7 @@ void Oven::heatToDesiredTemperature(int temp)
 {
     while(Oven::currentTemp < temp)
     {
-        currentTemp += 1;
+        ++currentTemp;
     }
 }
 
@@ -282,7 +282,7 @@ bool alertTimerExpired(int time)
 {
     while(time >= 0)
     {
-        time -= 1;
+        --time;
     }
     return time == 0;
 }
@@ -311,7 +311,7 @@ void Book::displayNextPage()
 {
     if(0 <= currentPage < numberOfPages)
     {
-        currentPage += 1;
+        ++currentPage;
     }
 }
 
@@ -319,7 +319,7 @@ void Book::displayPreviousPage()
 {
     if(0 < currentPage <= numberOfPages)
     {
-        currentPage -= 1;
+        --currentPage;
     }
 }
 
@@ -474,12 +474,12 @@ struct Motherboard
 
 void Motherboard::dataToRAM()
 {
-    maxRAM += 1;
+    ++maxRAM;
 }
 
 void Motherboard::generateAVSignals()
 {
-    AVSignals += 1;
+    ++AVSignals;
 }
 
 void Motherboard::autoSuspend()
@@ -582,7 +582,7 @@ struct GPU
 
 void GPU::outputAVSignal()
 {
-    AVSignals += 1;
+    ++AVSignals;
 }
 
 void GPU::cycleRGBDisplay()
