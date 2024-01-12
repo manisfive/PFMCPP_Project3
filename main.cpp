@@ -248,12 +248,12 @@ int Guitar::emitNote(GuitarString thisString, int fret)
 
 void Guitar::feedback()
 {
-    Guitar::audienceMood -= 3;
+    audienceMood -= 3;
 }
 
 void Guitar::detachFromStrap()
 {
-    Guitar::HP -= 2;
+    HP -= 2;
 }
 
 struct Oven
@@ -263,6 +263,7 @@ struct Oven
     float rateOfTemperatureIncrease = 16.5f;
     float cubicFeetOfInterior = 9.8f;
     bool selfCleaning = true;
+    int currentTemp = 70;
     
     void heatToDesiredTemperature(int temp);
     bool alertTimerExpired(int time); 
@@ -271,8 +272,7 @@ struct Oven
 
 void Oven::heatToDesiredTemperature(int temp)
 {
-    int currentTemp = 70;
-    while(currentTemp < temp)
+    while(Oven::currentTemp < temp)
     {
         currentTemp += 1;
     }
