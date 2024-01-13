@@ -28,6 +28,7 @@ Thing: Car Wash
 
 #include <iostream>
 #include <string>
+#include <cmath>
 namespace Part1eVersion 
 {
 struct CarWash        
@@ -107,11 +108,49 @@ struct CarWash
     you should be able to deduce the return type of those functions based on their usage in Person::run()
     You'll need to insert the Person struct from the video in the space below.
  */
+struct Person
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
 
+struct Foot
+    {
+    float length;
+    int toes = 5;
+    bool flatFooted;
+    bool isLeft = true;
 
+    void stepForward();
+    int stepSize();
+    };
 
+    void run(int howFast, bool startWithLeftFoot);
+};
 
+void Person::Foot::stepForward()
+{
+    if(isLeft==true)
+    {
+        std::cout << "Left!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Right!" << std::endl;
+    }
+}
 
+int Person::Foot::stepSize()
+{
+    if(flatFooted == true)
+    {
+        return 5;
+    }
+    return 8;  
+}
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
     If you have 'unused parameter' warnings, you aren't using one of your function parameters in your implementation.
@@ -137,17 +176,13 @@ paste your code below
 
 struct Guitar
 {
-    //5 properties:
-    //    1) make/model (std::string)
     std::string makeModel = "Fender Telecaster";
-    //    2) number of strings (int)
     int numberOfStrings = 6;
-    //    3) number of pickups (int)
     int numberOfPickups = 2;
-    //    4) acoustic/electric/nylon (std::string)
     std::string acousticElectricNylon = "Electric";
-    //    5) active pickups yes/no (bool)
     bool activePickups = false;
+    int HP = 10;
+    int audienceMood = 15;
 
     struct GuitarString
     {
@@ -156,78 +191,149 @@ struct Guitar
         std::string material = "Nickel wound";
         bool flatwound = false;
         bool coated = false;
-        std::string tuningOpen = "E4";
+        int tuningOpen = 64;//open high E midi number
+        float stringAge = 0;
 
-        float bend(int whichString, float distance = 0.0f); //adds pitchbend to emitNote() based on added tension
-        float degrade(float time, std::string material = "Nickel wound", bool coated = false); //lowers frequency value on a lowpass filter based on style of string
+        float bend(int whichString = 1, float distance = 0.0f); 
+        void degrade(float time, std::string thisMaterial = "Nickel wound", bool coated = false); 
         void snap();
     };
 
-    //3 things it can do:
-    //    1) emit note
-    int emitNote(GuitarString string, int fret = 0); //midi note number
-    //    2) feedback
+    GuitarString stringPlaying;
+
+    int emitNote(GuitarString string, int fret = 0);
     void feedback();
-    //    3) detach from strap
     void detachFromStrap();
 };
 
+float Guitar::GuitarString::bend(int whichString, float distance)
+{
+    float tension = 1 + static_cast<float>(whichString) * .2f;
+    return distance * tension;
+}
+
+void Guitar::GuitarString::degrade(float time, std::string thisMaterial, bool isCoated)
+{
+    float multiplier;
+    if(thisMaterial == "Nickel Wound")
+    {
+        multiplier = 1.f;
+    }
+    else if(thisMaterial == "Phospher Bronze")
+    {
+        multiplier = 1.5f;
+    }
+    else
+    {
+        multiplier = 2.0f;
+    }
+    if(isCoated == true)
+    {
+        multiplier *= .5f;
+    }
+    stringAge += time * multiplier;
+}
+
+void Guitar::GuitarString::snap()
+{
+    stringAge = 1;
+}
+
+int Guitar::emitNote(GuitarString thisString, int fret)
+{
+    stringPlaying = thisString;
+    int note = stringPlaying.tuningOpen + fret;
+    return note;
+}
+
+void Guitar::feedback()
+{
+    audienceMood -= 3;
+}
+
+void Guitar::detachFromStrap()
+{
+    HP -= 2;
+}
+
 struct Oven
 {
-    //5 properties:
-    //    1) number of burners on the stovetop (int)
     int numberOfBurners = 4;
-    //    2) glass top, coil, gas (std::string)
     std::string glassCoilGas = "Gas";
-    //    3) rate of temperature increase (float)
     float rateOfTemperatureIncrease = 16.5f;
-    //    4) cubic feet of interior (float)
     float cubicFeetOfInterior = 9.8f;
-    //    5) self cleaning (bool)
     bool selfCleaning = true;
-    //3 things it can do:
-    //    1) heats to desired temperature
-    void heatToDesiredTemperature(float temp);
-    //    2) alert timer expired
-    bool alertTimerExpired(int time); //input seconds until true, returns alarmSounds == true
-    //    3) self-clean
+    int currentTemp = 70;
+    
+    void heatToDesiredTemperature(int temp);
+    bool alertTimerExpired(int time); 
     void selfClean();
 };
 
+void Oven::heatToDesiredTemperature(int temp)
+{
+    while(Oven::currentTemp < temp)
+    {
+        ++currentTemp;
+    }
+}
+
+bool alertTimerExpired(int time)
+{
+    while(time >= 0)
+    {
+        --time;
+    }
+    return time == 0;
+}
+
+void Oven::selfClean()
+{
+    heatToDesiredTemperature(1000);
+}
+
 struct Book
 {
-    //5 properties:
-    //    1) height (float)
     float height = 7.9f;
-    //    2) width (float)
     float width = 5.5f;
-    //    3) hardcover yes/no (bool)
     bool hardcover = false;
-    //    4) number of pages (int)
     int numberOfPages = 350;
-    //    5) author (std::string)
     std::string author = "Kieth, Sam";
-    //3 things it can do:
-    //    1) display next page
-    int displayNextPage(); //new page number
-    //    2) display previous page
-    int displayPreviousPage(); //new page number
-    //    3) increment progress from white to yellow
-    float whiteToYellowProgress(float amount); //input percent yellowed, output total percentage
+    int currentPage = 0;
+    float agedAmount = 0.f;
+
+    void displayNextPage(); 
+    void displayPreviousPage(); 
+    void whiteToYellowProgress(float amount);
 };
+
+void Book::displayNextPage()
+{
+    if(0 <= currentPage < numberOfPages)
+    {
+        ++currentPage;
+    }
+}
+
+void Book::displayPreviousPage()
+{
+    if(0 < currentPage <= numberOfPages)
+    {
+        --currentPage;
+    }
+}
+
+void Book::whiteToYellowProgress(float amount)
+{
+    agedAmount = agedAmount + amount;
+}
 
 struct Bird
 {
-    //5 properties:
-    //    1) height (float)
     float height = 7.0f;
-    //    2) altitude (float)
     float altitude = 4800.0f;
-    //    3) wingspan (float)
     float wingspan = 15.0f;
-    //    4) type (string)
     std::string type = "pigeon";
-    //    5) gender (bool)
     bool isMale = true;
 
     struct Progeny
@@ -238,152 +344,299 @@ struct Bird
         bool canFly = false;
         bool canForage = false;
 
-        float flyTheNest(float maturePercent, float satedPercent);// returns a liklihood that a fledgling will successfully make it off and become a new Bird, or no effect, or die
-        float eat(float maturePercent, std::string target); //returns an amount to increment percentToMaturity
-        float chirp(bool parentPresent, float location, float timeOfDay);//retrns a liklihood that chirp will have no effect, attract parents' attention, attrect predator attention
+        void flyTheNest();
+        void eat(float maturePercent, std::string target);
+        int chirp(bool parentPresent, float location, int timeOfDay);
     };
 
-    //3 things it can do:
-    //    1) fly
-    float fly(float x, float y); //input target coordinates, output travel time
-    //    2) sing
+    Progeny fledgling;
+    double fly(double x, double y);
     void sing();
-    //    3) eat
-    float eat(std::string target); //input what's being eaten, ouput new total weight
-    std::string forage(Progeny progeny);//makes appropriate food available to progeny to eat based on percentToMaturity
+    void eat(std::string target);
+    void forage(Progeny progeny);
 };
+
+void Bird::Progeny::flyTheNest()
+{
+    float growUp = percentToMaturity + satedLevel;
+    if(.80f < percentToMaturity || 1.f <= growUp)
+    {
+        std::cout << "Your Fledgling grew up!";
+    }
+    else if(.60f <= percentToMaturity)
+    {
+        std::cout << "Your Fledgling survived the attempt, but isn't ready to grow up.";
+    }
+    else
+    {
+        std::cout << "Your Fledgling didn't survive the attempt...";
+    }
+    
+}
+
+void Bird::Progeny::eat(float maturePercent, std::string target)
+{
+    std::cout << "Your Fledgling ate a " << target;
+    percentToMaturity += maturePercent;
+}
+
+int Bird::Progeny::chirp(bool parentPresent, float location, int timeOfDay)
+{
+    int safety = 0;
+    if (parentPresent == true)
+    {
+        safety += 45;
+    }
+    if(location >= 40.f)
+    {
+        safety += 20;
+    }
+    if(7 < timeOfDay && timeOfDay < 18)
+    {
+        safety += 35;
+    }
+    return safety;
+}
+
+double Bird::fly(double x, double y)
+{
+    return sqrt(pow(x, 2.) + pow(y, 2.));
+}
+
+void Bird::sing()
+{
+    std::cout << "The bird sings!";
+}
+
+void Bird::eat(std::string target)
+{
+    std::cout << "Your Bird ate a " << target;
+}
+
+void Bird::forage(Progeny progeny)
+{
+    fledgling = progeny;
+    if(fledgling.percentToMaturity <= .2f)
+    {
+        std::cout << "Your fledglingneeds some seed!";
+    }
+    else if(.2f < fledgling.percentToMaturity && fledgling.percentToMaturity <= .6f)
+    {
+        std::cout << "Your fledgling needs a worm!";
+    }
+    else
+    {
+        std::cout << "Your fledgling needs a beetle!";
+    }
+}
 
 struct CPU
 {
-    //5 properties:
-    //    1) manufacturer (std::string)
     std::string manufacturer = "AMD";
-    //    2) temperature (float)
     float temperature = 55.5f;
-    //    3) clock speed (float)
     float clockSpeed = 3.5f;
-    //    4) cores (int)
     int cores = 6;
-    //    5) socket size (std::string)
     std::string socket = "AM4";
-    //3 things it can do:
-    //    1) store data
-    float storeData(); //returns stored values
-    //    2) output results
-    float outputResults(); //returns current values
-    //    3) compute
-    float compute(float x, float y);//returns result of operations on inputs
+
+    float storeData(); 
+    float outputResults(); 
+    float compute(float x, float y);
 };
+
+float CPU::storeData()
+{
+    return 1.43667f * 2.44435f * temperature;
+}
+
+float CPU::outputResults()
+{
+    return 89.667f * .30741f * temperature;
+}
+
+float CPU::compute(float x, float y)
+{
+    return x * y * temperature;
+}
 
 struct Motherboard
 {
-    //5 properties:
-    //    1) manufacturer (std::string)
     std::string manufacturer = "Gigabyte";
-    //    2) wireless LAN capability (bool)
     bool wirelessLAN = false;
-    //    3) number of m.2 slots (int)
     int m2Slots = 2;
-    //    4) number of expansion slots (int
     int expansionSlots = 4;
-    //    5) max RAM capacity (int)
     int maxRAM = 64;
-    //3 things it can do:
-    //    1) transmit data to RAM
+    int AVSignals = 0;
+    
     void dataToRAM();
-    //    2) generate A/V signals
     void generateAVSignals();
-    //    3) auto suspend
     void autoSuspend();
 };
 
+void Motherboard::dataToRAM()
+{
+    ++maxRAM;
+}
+
+void Motherboard::generateAVSignals()
+{
+    ++AVSignals;
+}
+
+void Motherboard::autoSuspend()
+{
+    maxRAM = 0;
+    AVSignals = 0;
+}
+
 struct KeyboardAndMouse
 {
-    //5 properties:
-    //    1) number of mouse buttons (int)
     int numberOfMouseButtons = 3;
-    //    2) keyboard style chiclet/mechanical (bool)
     bool mechanicalStyle = false;
-    //    3) wireless yes/no (bool)
     bool wireless = true;
-    //    4) language setting (std::string)
     std::string language = "English";
-    //    5) numpad yes/no (bool)
     bool numpad = false;
-    //3 things it can do:
-    //    1) transmit keystroke data
-    int transmitKeystrokeData(); //returns ASCII value
-    //    2) transmit mouse XY change
-    float transmitXYChange(); //returns distance from a 0,0 position, which refreshes periodically
-    //    3) toggle status light (like capslock)
-    bool toggleStatus(std::string status);//in which indicator to toggle, out isLit true or false
+
+    int transmitKeystrokeData();
+    double transmitXYChange(double x, double y);
+    bool toggleStatus(bool status);
 };
+
+int KeyboardAndMouse::transmitKeystrokeData()
+{
+    return 103;
+}
+
+double KeyboardAndMouse::transmitXYChange(double x, double y)
+{
+    return sqrt(pow(x, 2.) + pow(y, 2.));
+}
+
+bool KeyboardAndMouse::toggleStatus(bool status)
+{
+    if(status == true)
+    {
+        return false;
+    }
+        return true;
+}
 
 struct CoolingSystem
 {
-    //5 properties:
-    //    1) liquid yes/no (bool)
     bool liquid = false;
-    //    2) number of rgb lights (int)
     int numberOfRGB = 5;
-    //    3) number of fans (int)
     int numberOfFans = 3;
-    //    4) fan setting (int)
     int fanSetting = 2;
-    //    5) molex power connector yes/no (bool)
     bool molex = false;
-    //3 things it can do:
-    //    1) set fan speed
-    void setFanSpeed(int speed);
-    //    2) set light color    
+    std::string lightColor = "red";
+
+    void setFanSpeed(int speed);   
     void setLightColor(std::string color);
-    //    3) spring a leak
     void springALeak();
 };
 
+void CoolingSystem::setFanSpeed(int speed)
+{
+    if(0 <= speed && speed >= 5)
+    {
+        fanSetting = speed;
+    }
+    else
+    {
+        std::cout << "Invalid Selection";
+    }
+}
+
+void CoolingSystem::setLightColor(std::string color)
+{
+    if(color == "red" || color == "orange" || color == "blue" || color == "green")
+    {
+        lightColor = color;
+    }
+    else
+    {
+        std::cout << "Please Pick a Color";
+    }
+    
+}
+
+void CoolingSystem::springALeak()
+{
+    liquid = true;
+}
+
 struct GPU
 {
-    //5 properties:
-    //    1) intel/nvidia (bool)
     bool intel = false;
-    //    2) amount of ram (int)
     int ram = 8;
-    //    3) clock speed (float)
     float clockSpeed = 1525.f;
-    //    4) number of fans (int)
     int numberOfFans = 3;
-    //    5) number of outputs (int)
     int numberOfOutputs = 4;
-    //3 things it can do:
-    //    1) output a/v signal
+    int AVSignals = 0;
+    int currentRGB = 0;
+    int fanSpeed = 3;
+
     void outputAVSignal();
-    //    2) cycle RGB display
-    int cycleRGBDisplay(); //increments current display cycle
-    //    3) adjust fan speed
+    void cycleRGBDisplay(); 
     void adjustFanSpeed(int speed);
 };
 
+void GPU::outputAVSignal()
+{
+    ++AVSignals;
+}
+
+void GPU::cycleRGBDisplay()
+{
+    if(currentRGB < 8)
+    {
+        currentRGB += 1;
+    }
+    else
+    {
+        currentRGB = 0;
+    }
+}
+
+void GPU::adjustFanSpeed(int speed)
+{
+    if(0 <= speed && speed >= 5)
+    {
+        fanSpeed = speed;
+    }
+    else
+    {
+        std::cout << "Invalid Selection";
+    }
+}
+
 struct Computer
 {
-    //5 properties:
-    //    1) CPU
     CPU myCPU;
-    //    2) motherboard
     Motherboard myMotherboard;
-    //    3) keyboard and mouse
     KeyboardAndMouse myKeyboardAndMouse;
-    //    4) cooling system
     CoolingSystem myCoolingSystem;
-    //    5) GPU
     GPU myGPU;
-    //3 things it can do:
-    //    1) run program
+    
     void runProgram();
-    //    2) allocate RAM
     void allocateRAM();
-    //    3) refresh display
     void refreshDisplay();
 };
+
+void Computer::runProgram()
+{
+    std::cout << "You are running my program...";
+}
+
+void Computer::allocateRAM()
+{
+    myMotherboard.dataToRAM();
+}
+
+void Computer::refreshDisplay()
+{
+    myMotherboard.generateAVSignals();
+    myGPU.outputAVSignal();
+}
 
 int main()
 {
