@@ -16,6 +16,7 @@
  */
 
 #include <iostream>
+#include <cmath>
 namespace Example 
 {
 struct UDT  
@@ -47,9 +48,9 @@ struct Guitar
     Guitar();
     std::string makeModel;
     int numberOfStrings;
-    int numberOfPickups;
+    int numberOfPickups{2};
     std::string acousticElectricNylon;
-    bool activePickups;
+    bool activePickups{false};
     int HP;
     int audienceMood;
 
@@ -58,8 +59,8 @@ struct Guitar
         GuitarString();
         std::string brand;
         int gauge;
-        std::string material;
-        bool flatwound;
+        std::string material = "Nickel wound";
+        bool flatwound = false;
         bool coated;
         int tuningOpen;
         float stringAge;
@@ -67,6 +68,7 @@ struct Guitar
         float bend(int whichString = 1, float distance = 0.0f); 
         void degrade(float time, std::string thisMaterial = "Nickel wound", bool coated = false); 
         void snap();
+        void printMaterialCoated();
     };
 
     GuitarString stringPlaying;
@@ -74,16 +76,15 @@ struct Guitar
     int emitNote(GuitarString string, int fret = 0);
     void feedback();
     void detachFromStrap();
+    void printPickupsStrings();
 };
 
-Guitar::GuitarString::GuitarString()
+Guitar::GuitarString::GuitarString() :
+coated(false),
+tuningOpen(64) //open high E midi number
 {
     brand = "D'addario";
     gauge = 10;
-    material = "Nickel wound";
-    flatwound = false;
-    coated = false;
-    tuningOpen = 64;//open high E midi number
     stringAge = 0;
     std::cout << "GuitarString has been constructed!" << std::endl;
 }
@@ -122,13 +123,16 @@ void Guitar::GuitarString::snap()
     std::cout << "Time to change strings..." << std::endl;
 }
 
-Guitar::Guitar()
+void Guitar::GuitarString::printMaterialCoated()
+{
+    std::cout << "Guitar::GuitarString::printMaterialCoated() material:" << material << " coated: " << coated << std::endl; 
+}
+
+Guitar::Guitar() : 
+numberOfStrings(6),
+acousticElectricNylon("electric")
 {
     makeModel = "Fender Telecaster";
-    numberOfStrings = 6;
-    numberOfPickups = 2;
-    acousticElectricNylon = "electric";
-    activePickups = false;
     HP = 10;
     audienceMood = 10;
     std::cout << "Guitar has been constructed!" << std::endl;
@@ -152,29 +156,33 @@ void Guitar::detachFromStrap()
     std::cout << "Clunk!" << std::endl;
 }
 
+void Guitar::printPickupsStrings()
+{
+    std::cout << "Guitar::printPickupsStrings() pickups:" << numberOfPickups << " strings: " << numberOfStrings << std::endl; 
+}
+
 struct Oven
 {
     Oven();
     int numberOfBurners;
     std::string glassCoilGas;
-    float rateOfTemperatureIncrease;
+    float rateOfTemperatureIncrease{16.5f};
     float cubicFeetOfInterior;
     bool selfCleaning;
-    int currentTemp;
+    int currentTemp = 70;
     
     void heatToDesiredTemperature(int temp);
     bool alertTimerExpired(int time); 
     void selfClean();
+    void printRateOfIncreaseAndCubicFeet();
 };
 
-Oven::Oven()
+Oven::Oven() :
+cubicFeetOfInterior{9.8f},
+selfCleaning(true)
 {
     numberOfBurners = 4;
     glassCoilGas = "Gas";
-    rateOfTemperatureIncrease = 16.5f;
-    cubicFeetOfInterior = 9.8f;
-    selfCleaning = true;
-    currentTemp = 70;
     std::cout << "Oven has been constructed!" << std::endl;
 }
 
@@ -202,13 +210,18 @@ void Oven::selfClean()
     heatToDesiredTemperature(1000);
 }
 
+void Oven::printRateOfIncreaseAndCubicFeet()
+{
+    std::cout << "Oven::printRateOfIncreaseAndCubicFeet() rate of increase:" << rateOfTemperatureIncrease << " cubic feet: " << cubicFeetOfInterior << std::endl; 
+}
+
 struct Book
 {
     Book();
     float height;
     float width;
     bool hardcover;
-    int numberOfPages;
+    int numberOfPages = 350;
     std::string author;
     int currentPage;
     float agedAmount;
@@ -216,17 +229,17 @@ struct Book
     void displayNextPage(); 
     void displayPreviousPage(); 
     void whiteToYellowProgress(float amount);
+    void printNumberOfPagesAndCurrentPage();
 };
 
-Book::Book()
+Book::Book() :
+currentPage(0),
+agedAmount{0.f}
 {
     height = 7.9f;
     width = 5.5f;
     hardcover = false;
-    numberOfPages = 350;
     author = "Kieth, Sam";
-    currentPage = 0;
-    agedAmount = 0.f;
     std::cout << "Book has been constructed!" << std::endl;
 }
 
@@ -251,6 +264,11 @@ void Book::whiteToYellowProgress(float amount)
     agedAmount = agedAmount + amount;
 }
 
+void Book::printNumberOfPagesAndCurrentPage()
+{
+    std::cout << "Book::printNumberOfPagesAndCurrentPage() numner of pages:" << numberOfPages << " current page: " << currentPage << std::endl; 
+}
+
 struct Bird
 {
     Bird();
@@ -258,20 +276,21 @@ struct Bird
     float altitude;
     float wingspan;
     std::string type;
-    bool isMale;
+    bool isMale = true;
 
     struct Progeny
     {
         Progeny();
         bool stillEgg;
         float percentToMaturity;
-        float satedLevel;
-        bool canFly;
+        float satedLevel{0.f};
+        bool canFly = false;
         bool canForage;
 
         void flyTheNest();
         void eat(float maturePercent, std::string target);
         int chirp(bool parentPresent, float location, int timeOfDay);
+        void printSatedEgg();
     };
 
     Progeny fledgling;
@@ -279,14 +298,13 @@ struct Bird
     void sing();
     void eat(std::string target);
     void forage(Progeny progeny);
+    void printMaleWingspan();
 };
 
-Bird::Progeny::Progeny()
+Bird::Progeny::Progeny() :
+stillEgg(true),
+percentToMaturity{0.f}
 {
-    stillEgg = true;
-    percentToMaturity = 0.0f;
-    satedLevel = 0.0f;
-    canFly = false;
     canForage = false;
     std::cout << "Progeny has been constructed!" << std::endl;
 }
@@ -334,13 +352,17 @@ int Bird::Progeny::chirp(bool parentPresent, float location, int timeOfDay)
     return safety;
 }
 
-Bird::Bird()
+void Bird::Progeny::printSatedEgg()
+{
+    std::cout << "Bird::Progeny::printSatedEgg() satedLevel:" << satedLevel << " stillEgg: " << stillEgg << std::endl; 
+}
+
+Bird::Bird() :
+wingspan{15.0f},
+type("pigeon")
 {
     height = 7.0f;
     altitude = 4800.0f;
-    wingspan = 15.0f;
-    type = "pigeon";
-    isMale = true;
     std::cout << "Bird has been constructed!" << std::endl;
 }
 
@@ -376,6 +398,11 @@ void Bird::forage(Progeny progeny)
     }
 }
 
+void Bird::printMaleWingspan()
+{
+    std::cout << "Bird::printMaleWingspan() male?:" << isMale << " wingspan: " << wingspan << std::endl; 
+}
+
 struct CPU
 {
     CPU();
@@ -383,20 +410,20 @@ struct CPU
     float temperature;
     float clockSpeed;
     int cores;
-    std::string socket;
+    std::string socket = "AM4";
 
     float storeData(); 
     float outputResults(); 
     float compute(float x, float y);
+    void printClockSpeedAndSocket();
 };
 
-CPU::CPU()
+CPU::CPU() :
+clockSpeed{3.5f},
+cores(6)
 {
     manufacturer = "AMD";
     temperature = 55.5f;
-    clockSpeed = 3.5f;
-    cores = 6;
-    socket = "AM4";
     std::cout << "CPU has been constructed!" << std::endl;
 }
 
@@ -415,6 +442,11 @@ float CPU::compute(float x, float y)
     return x * y * temperature;
 }
 
+void CPU::printClockSpeedAndSocket()
+{
+    std::cout << "CPU::printClockSpeedAndSocket() clock speed:" << clockSpeed << " socket: " << socket << std::endl; 
+}
+
 struct Motherboard
 {
     Motherboard();
@@ -422,21 +454,21 @@ struct Motherboard
     bool wirelessLAN;
     int m2Slots;
     int expansionSlots;
-    int maxRAM;
+    int maxRAM = 64;
     int AVSignals;
     
     void dataToRAM();
     void generateAVSignals();
     void autoSuspend();
+    void printMaxRAMAndManufacturer();
 };
 
-Motherboard::Motherboard()
+Motherboard::Motherboard() :
+manufacturer("Gigabyte"),
+m2Slots(2)
 {
-    manufacturer = "Gigabyte";
     wirelessLAN = false;
-    m2Slots = 2;
     expansionSlots = 4;
-    maxRAM = 64;
     AVSignals = 0;
     std::cout << "Motherboard has been constructed!" << std::endl;
 }
@@ -457,6 +489,11 @@ void Motherboard::autoSuspend()
     AVSignals = 0;
 }
 
+void Motherboard::printMaxRAMAndManufacturer()
+{
+    std::cout << "Motherboard::printMaxRAMAndManufacturer() max RAM:" << maxRAM << " manufacturer: " << manufacturer << std::endl; 
+}
+
 struct KeyboardAndMouse
 {
     KeyboardAndMouse();
@@ -464,20 +501,20 @@ struct KeyboardAndMouse
     bool mechanicalStyle;
     bool wireless;
     std::string language;
-    bool numpad;
+    bool numpad = false;
 
     int transmitKeystrokeData();
     double transmitXYChange(double x, double y);
     bool toggleStatus(bool status);
+    void printNumpadAndLanguage();
 };
 
-KeyboardAndMouse::KeyboardAndMouse()
+KeyboardAndMouse::KeyboardAndMouse() :
+wireless(true),
+language("English")
 {
     numberOfMouseButtons = 3;
     mechanicalStyle = false;
-    wireless = true;
-    language = "English";
-    numpad = false;
     std::cout << "KeyboardAndMouse has been constructed!" << std::endl;
 }
     
@@ -500,13 +537,18 @@ bool KeyboardAndMouse::toggleStatus(bool status)
         return true;
 }
 
+void KeyboardAndMouse::printNumpadAndLanguage()
+{
+    std::cout << " KeyboardAndMouse::printNumpadAndLanguage() numpad:" << numpad << " language: " << language << std::endl; 
+}
+
 struct CoolingSystem
 {
     
     CoolingSystem();
     bool liquid;
     int numberOfRGB;
-    int numberOfFans;
+    int numberOfFans = 3;
     int fanSetting;
     bool molex;
     std::string lightColor;
@@ -514,13 +556,14 @@ struct CoolingSystem
     void setFanSpeed(int speed);   
     void setLightColor(std::string color);
     void springALeak();
+    void printFansRGB();
+
 };
 
-CoolingSystem::CoolingSystem()
+CoolingSystem::CoolingSystem() :
+liquid(false),
+numberOfRGB(5)
 {
-    liquid = false;
-    numberOfRGB = 5;
-    numberOfFans = 3;
     fanSetting = 2;
     molex = false;
     lightColor = "red";
@@ -558,6 +601,11 @@ void CoolingSystem::springALeak()
     liquid = true;
 }
 
+void CoolingSystem::printFansRGB()
+{
+    std::cout << "CoolingSystem::printFansRGB() number of fans:" << numberOfFans << " number of RGB: " << numberOfRGB << std::endl; 
+}
+
 struct GPU
 {
     GPU();
@@ -568,23 +616,24 @@ struct GPU
     int numberOfOutputs;
     int AVSignals;
     int currentRGB;
-    int fanSpeed;
+    int fanSpeed = 3;
 
     void outputAVSignal();
     void cycleRGBDisplay(); 
     void adjustFanSpeed(int speed);
+    void printFanSpeedRGBCycle();
+
 };
 
-GPU::GPU()
+GPU::GPU() :
+AVSignals(0),
+currentRGB(0)
 {
     intel = false;
     ram = 8;
     clockSpeed = 1525.f;
     numberOfFans = 3;
     numberOfOutputs = 4;
-    AVSignals = 0;
-    currentRGB = 0;
-    fanSpeed = 3;
     std::cout << "GPU has been constructed!" << std::endl;
 }
 
@@ -618,6 +667,11 @@ void GPU::adjustFanSpeed(int speed)
     std::cout << "Speed is " << fanSpeed << std::endl;
 }
 
+void GPU::printFanSpeedRGBCycle()
+{
+    std::cout << "GPU::printFanSpeedRGBCycle() fan speed:" << fanSpeed << " RGB cycle: " << currentRGB << std::endl; 
+}
+
 struct Computer
 {
     Computer();
@@ -630,6 +684,7 @@ struct Computer
     void runProgram();
     void allocateRAM();
     void refreshDisplay();
+    void printStats();
 };
 
 Computer::Computer()
@@ -651,6 +706,12 @@ void Computer::refreshDisplay()
 {
     myMotherboard.generateAVSignals();
     myGPU.outputAVSignal();
+}
+
+void Computer::printStats()
+{
+    myMotherboard.printMaxRAMAndManufacturer();
+    myGPU.printFanSpeedRGBCycle();
 }
 
 int main()
@@ -706,10 +767,26 @@ int main()
     dell.allocateRAM();
     dell.refreshDisplay();
     dell.runProgram();
+    
     std::cout << "Progeny's percent to maturity is " << progeny.percentToMaturity << "." << std::endl;
     std::cout << "The Result of Ryzen's computation is " << ryzen.outputResults() << "." << std::endl;
     std::cout << "Oven's current temperature is " << oven.currentTemp << "." << std::endl;
     std::cout << "Noctua's RGB color is " << noctua.lightColor << "." << std::endl;
     std::cout << "The book has " << book.numberOfPages << " pages." << std::endl;
+    
+    tele.printPickupsStrings();
+    tele1.printMaterialCoated();
+    oven.printRateOfIncreaseAndCubicFeet();
+    book.printNumberOfPagesAndCurrentPage();
+    bird.printMaleWingspan();
+    progeny.printSatedEgg();
+    ryzen.printClockSpeedAndSocket();
+    motherboard.printMaxRAMAndManufacturer();
+    logitech.printNumpadAndLanguage();
+    noctua.printFansRGB();
+    nvidia.printFanSpeedRGBCycle();
+    dell.printStats();
+
+    
     std::cout << "good to go!" << std::endl;
 }
