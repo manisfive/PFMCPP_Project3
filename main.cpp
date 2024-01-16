@@ -33,6 +33,7 @@ Create a branch named Part5
  */
 
 #include <iostream>
+#include <cmath>
 namespace Example 
 {
 struct Bar 
@@ -70,11 +71,6 @@ int main()
 //call Example::main() in main()
 
 
-
-
-
-
-
 struct Guitar
 {
     Guitar();
@@ -101,6 +97,7 @@ struct Guitar
         void degrade(float time, std::string thisMaterial = "Nickel wound", bool coated = false); 
         void snap();
         void printMaterialCoated();
+        void microwave(int time);
     };
 
     GuitarString stringPlaying;
@@ -109,6 +106,7 @@ struct Guitar
     void feedback();
     void detachFromStrap();
     void printPickupsStrings();
+    void polish();
 };
 
 Guitar::GuitarString::GuitarString() :
@@ -155,6 +153,22 @@ void Guitar::GuitarString::snap()
     std::cout << "Time to change strings..." << std::endl;
 }
 
+void Guitar::GuitarString::microwave(int time)
+{
+    if(stringAge == 0.f)
+    {
+        stringAge = 0.0003f;
+    }
+    while(time > 0)
+        {
+            std::cout << "He's cooking now!" << std::endl;
+            stringAge *= 3.0f;
+            --time;
+        }
+    std::cout << "That string is cooked! String age: " << stringAge << std::endl;
+}
+
+
 void Guitar::GuitarString::printMaterialCoated()
 {
     std::cout << "Guitar::GuitarString::printMaterialCoated() material:" << material << " coated: " << coated << std::endl; 
@@ -193,6 +207,16 @@ void Guitar::printPickupsStrings()
     std::cout << "Guitar::printPickupsStrings() pickups:" << numberOfPickups << " strings: " << numberOfStrings << std::endl; 
 }
 
+void Guitar::polish()
+{
+    while(HP < 10)
+    {
+        std::cout << "Polishing the guitar..." << std::endl;
+        ++HP;
+    }
+    std::cout << "Your guitar is good as new!" << std::endl;
+}
+
 struct Oven
 {
     Oven();
@@ -202,7 +226,7 @@ struct Oven
     float cubicFeetOfInterior;
     bool selfCleaning;
     int currentTemp = 70;
-    
+
     void heatToDesiredTemperature(int temp);
     bool alertTimerExpired(int time); 
     void selfClean();
@@ -222,9 +246,11 @@ void Oven::heatToDesiredTemperature(int temp)
 {
     while(Oven::currentTemp < temp)
     {
-        ++currentTemp;
+        std::cout << "Oven is " << currentTemp << "!" << std::endl;
+        currentTemp += static_cast<int>(rateOfTemperatureIncrease);
     }
     std::cout << "Oven is ready!" << std::endl;
+    currentTemp = 0;
 }
 
 bool Oven::alertTimerExpired(int time)
@@ -262,6 +288,7 @@ struct Book
     void displayPreviousPage(); 
     void whiteToYellowProgress(float amount);
     void printNumberOfPagesAndCurrentPage();
+    void readPages(int pages);
 };
 
 Book::Book() :
@@ -301,14 +328,33 @@ void Book::printNumberOfPagesAndCurrentPage()
     std::cout << "Book::printNumberOfPagesAndCurrentPage() numner of pages:" << numberOfPages << " current page: " << currentPage << std::endl; 
 }
 
+void Book::readPages(int pages)
+{
+    for(int i = pages; i > 0; --i)
+    {    
+        if(currentPage >= numberOfPages)
+            {
+                std::cout << "What a good book!" << std::endl; 
+                return;
+            }
+        else
+        {
+            std::cout << "What an interesting page " << currentPage << " is..." <<std::endl;
+            ++currentPage;
+        }
+    }
+    std::cout << "It was so fun reading " << pages << " pages!" << std::endl; 
+}
+
 struct Bird
 {
     Bird();
     float height;
     float altitude;
-    float wingspan;
+    double wingspan;
     std::string type;
     bool isMale = true;
+    double distance = 0.;
 
     struct Progeny
     {
@@ -323,14 +369,16 @@ struct Bird
         void eat(float maturePercent, std::string target);
         int chirp(bool parentPresent, float location, int timeOfDay);
         void printSatedEgg();
+        void hatch();
     };
 
     Progeny fledgling;
-    double fly(double x, double y);
+    void fly(double x, double y);
     void sing();
     void eat(std::string target);
     void forage(Progeny progeny);
     void printMaleWingspan();
+    void howManyFlaps();
 };
 
 Bird::Progeny::Progeny() :
@@ -356,7 +404,7 @@ void Bird::Progeny::flyTheNest()
     {
         std::cout << "Your Fledgling didn't survive the attempt..." << std::endl;
     }
-    
+
 }
 
 void Bird::Progeny::eat(float maturePercent, std::string target)
@@ -389,8 +437,22 @@ void Bird::Progeny::printSatedEgg()
     std::cout << "Bird::Progeny::printSatedEgg() satedLevel:" << satedLevel << " stillEgg: " << stillEgg << std::endl; 
 }
 
+void Bird::Progeny::hatch()
+{
+    if(stillEgg)
+    {
+        for(int i = 1; i < 20; ++i)
+            {
+                std::cout << "Embryo is growing..." << std::endl;
+            }
+        std::cout << "Fledgling has hatched!" << std::endl;
+        stillEgg = false;
+    }
+}
+
+
 Bird::Bird() :
-wingspan{15.0f},
+wingspan{15.0},
 type("pigeon")
 {
     height = 7.0f;
@@ -398,9 +460,9 @@ type("pigeon")
     std::cout << "Bird has been constructed!" << std::endl;
 }
 
-double Bird::fly(double x, double y)
+void Bird::fly(double x, double y)
 {
-    return sqrt(pow(x, 2.) + pow(y, 2.));
+    distance += sqrt(pow(x, 2.) + pow(y, 2.));
 }
 
 void Bird::sing()
@@ -435,6 +497,18 @@ void Bird::printMaleWingspan()
     std::cout << "Bird::printMaleWingspan() male?:" << isMale << " wingspan: " << wingspan << std::endl; 
 }
 
+void Bird::howManyFlaps()
+{
+    double i = distance;
+    int j = 0;
+    while(i > 0)
+        {
+            ++j;
+            i -= wingspan;
+        }
+    std::cout << "Your bird has flappped " << j << " times so far!" << std::endl;
+}
+
 struct CPU
 {
     CPU();
@@ -448,6 +522,7 @@ struct CPU
     float outputResults(); 
     float compute(float x, float y);
     void printClockSpeedAndSocket();
+    void overheat();
 };
 
 CPU::CPU() :
@@ -479,6 +554,17 @@ void CPU::printClockSpeedAndSocket()
     std::cout << "CPU::printClockSpeedAndSocket() clock speed:" << clockSpeed << " socket: " << socket << std::endl; 
 }
 
+void CPU::overheat()
+{
+    while(temperature < 210)
+        {
+            std::cout << "Add another insert reverb!" << std::endl;
+            temperature += 15;
+        }   
+    std::cout << "Overheated! Shutting down..." << std::endl;
+        temperature = 55;
+}
+
 struct Motherboard
 {
     Motherboard();
@@ -488,11 +574,12 @@ struct Motherboard
     int expansionSlots;
     int maxRAM = 64;
     int AVSignals;
-    
+
     void dataToRAM();
     void generateAVSignals();
     void autoSuspend();
     void printMaxRAMAndManufacturer();
+    void badSectors();
 };
 
 Motherboard::Motherboard() :
@@ -507,7 +594,7 @@ m2Slots(2)
 
 void Motherboard::dataToRAM()
 {
-    ++maxRAM;
+    maxRAM += 5;
 }
 
 void Motherboard::generateAVSignals()
@@ -526,6 +613,16 @@ void Motherboard::printMaxRAMAndManufacturer()
     std::cout << "Motherboard::printMaxRAMAndManufacturer() max RAM:" << maxRAM << " manufacturer: " << manufacturer << std::endl; 
 }
 
+void Motherboard::badSectors()
+{
+    while(maxRAM > 0)
+        {
+            std::cout << "RAM corrupted!" << std::endl; 
+            --maxRAM;
+        }
+}
+
+
 struct KeyboardAndMouse
 {
     KeyboardAndMouse();
@@ -539,6 +636,7 @@ struct KeyboardAndMouse
     double transmitXYChange(double x, double y);
     bool toggleStatus(bool status);
     void printNumpadAndLanguage();
+    void typing(int words);
 };
 
 KeyboardAndMouse::KeyboardAndMouse() :
@@ -549,7 +647,7 @@ language("English")
     mechanicalStyle = false;
     std::cout << "KeyboardAndMouse has been constructed!" << std::endl;
 }
-    
+
 int KeyboardAndMouse::transmitKeystrokeData()
 {
     return 103;
@@ -574,9 +672,27 @@ void KeyboardAndMouse::printNumpadAndLanguage()
     std::cout << " KeyboardAndMouse::printNumpadAndLanguage() numpad:" << numpad << " language: " << language << std::endl; 
 }
 
+void KeyboardAndMouse::typing(int words)
+{
+    int check = 1;
+    for(int i = words * 6; i > 0; --i)
+        {
+            if(check == 1)
+            {
+                std::cout << "Click!" << std::endl;
+                check = 0;      
+            }
+            else
+            {
+                std::cout << "Clack!" << std::endl;
+                check = 1;
+            }
+        }
+}
+
 struct CoolingSystem
 {
-    
+
     CoolingSystem();
     bool liquid;
     int numberOfRGB;
@@ -589,6 +705,7 @@ struct CoolingSystem
     void setLightColor(std::string color);
     void springALeak();
     void printFansRGB();
+    void powerStatus(int hours);
 
 };
 
@@ -601,7 +718,7 @@ numberOfRGB(5)
     lightColor = "red";
     std::cout << "CoolingSystem has been constructed!" << std::endl;
 }
-    
+
 void CoolingSystem::setFanSpeed(int speed)
 {
     if(0 <= speed && speed >= 5)
@@ -625,7 +742,7 @@ void CoolingSystem::setLightColor(std::string color)
     {
         std::cout << "Please Pick a Color" << std::endl;
     }
-    
+
 }
 
 void CoolingSystem::springALeak()
@@ -636,6 +753,16 @@ void CoolingSystem::springALeak()
 void CoolingSystem::printFansRGB()
 {
     std::cout << "CoolingSystem::printFansRGB() number of fans:" << numberOfFans << " number of RGB: " << numberOfRGB << std::endl; 
+}
+
+void CoolingSystem::powerStatus(int hours)
+{
+    int jigawatts = 8;
+    for(int i = hours* 60; i > 0; --i)
+        {
+            std::cout << "Cooling has consumed " << jigawatts << " jigawatts!" << std::endl; 
+            jigawatts += 8;
+        }
 }
 
 struct GPU
@@ -649,11 +776,13 @@ struct GPU
     int AVSignals;
     int currentRGB;
     int fanSpeed = 3;
+    int model = 1;
 
     void outputAVSignal();
     void cycleRGBDisplay(); 
     void adjustFanSpeed(int speed);
     void printFanSpeedRGBCycle();
+    void upgrade();
 
 };
 
@@ -704,6 +833,35 @@ void GPU::printFanSpeedRGBCycle()
     std::cout << "GPU::printFanSpeedRGBCycle() fan speed:" << fanSpeed << " RGB cycle: " << currentRGB << std::endl; 
 }
 
+void GPU::upgrade()
+{
+    while(model < 5)
+        {
+            if(model == 1)
+            {
+                std::cout << "You got a GTX 1660!" << std::endl;
+                ++model;
+            }
+            if(model == 2)
+                {
+                    std::cout << "You got a RTX 2070!"<< std::endl;
+                    ++model;
+                }
+            if(model == 3)
+            {
+                std::cout << "You got a RTX 3070!"<< std::endl;
+                ++model;
+            }
+            if(model == 4)
+            {
+                std::cout << "You got a RTX 4090!"<< std::endl;
+                ++model;
+            }
+        }
+    model = 1;
+}
+
+
 struct Computer
 {
     Computer();
@@ -717,6 +875,7 @@ struct Computer
     void allocateRAM();
     void refreshDisplay();
     void printStats();
+    void typingAndPowerStatus(int a, int b);
 };
 
 Computer::Computer()
@@ -746,6 +905,12 @@ void Computer::printStats()
     myGPU.printFanSpeedRGBCycle();
 }
 
+void Computer::typingAndPowerStatus(int a, int b)
+{
+    myKeyboardAndMouse.typing(a);
+    myCoolingSystem.powerStatus(b);
+}
+
 int main()
 {
     Example::main();
@@ -761,7 +926,7 @@ int main()
     CoolingSystem noctua;
     GPU nvidia;
     Computer dell;
-    
+
     tele.emitNote(tele1, 7);    
     tele.detachFromStrap();
     tele.feedback();
@@ -775,7 +940,7 @@ int main()
     book.displayPreviousPage();
     book.whiteToYellowProgress(.43f);   
     bird.eat("worm");
-    bird.fly(20.66, 80.5);
+    bird.fly(6348.22, 81000.2);
     bird.sing();
     bird.forage(progeny);
     progeny.flyTheNest();
@@ -799,13 +964,13 @@ int main()
     dell.allocateRAM();
     dell.refreshDisplay();
     dell.runProgram();
-    
+
     std::cout << "Progeny's percent to maturity is " << progeny.percentToMaturity << "." << std::endl;
     std::cout << "The Result of Ryzen's computation is " << ryzen.outputResults() << "." << std::endl;
     std::cout << "Oven's current temperature is " << oven.currentTemp << "." << std::endl;
     std::cout << "Noctua's RGB color is " << noctua.lightColor << "." << std::endl;
     std::cout << "The book has " << book.numberOfPages << " pages." << std::endl;
-    
+
     tele.printPickupsStrings();
     tele1.printMaterialCoated();
     oven.printRateOfIncreaseAndCubicFeet();
@@ -819,6 +984,19 @@ int main()
     nvidia.printFanSpeedRGBCycle();
     dell.printStats();
 
-    
+    tele.polish();
+    tele1.microwave(4);
+    oven.heatToDesiredTemperature(500);
+    book.readPages(400);
+    bird.howManyFlaps();
+    progeny.hatch();
+    ryzen.overheat();
+    motherboard.badSectors();
+    logitech.typing(7);
+    noctua.powerStatus(2);
+    nvidia.upgrade();
+    dell.typingAndPowerStatus(2, 3);
+
     std::cout << "good to go!" << std::endl;
 }
+
