@@ -339,8 +339,8 @@ void Book::readPages(int pages)
         }
         else
         {
-        std::cout << "What an interesting page " << currentPage << " is..." <<std::endl;
-        ++currentPage;
+            std::cout << "What an interesting page " << currentPage << " is..." <<std::endl;
+            ++currentPage;
         }
     }
     std::cout << "It was so fun reading " << pages << " pages!" << std::endl; 
@@ -664,7 +664,7 @@ bool KeyboardAndMouse::toggleStatus(bool status)
     {
         return false;
     }
-        return true;
+    return true;
 }
 
 void KeyboardAndMouse::printNumpadAndLanguage()
