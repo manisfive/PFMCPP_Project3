@@ -160,11 +160,11 @@ void Guitar::GuitarString::microwave(int time)
         stringAge = 0.0003f;
     }
     while(time > 0)
-        {
-            std::cout << "He's cooking now!" << std::endl;
-            stringAge *= 3.0f;
-            --time;
-        }
+    {
+        std::cout << "He's cooking now!" << std::endl;
+        stringAge *= 3.0f;
+        --time;
+    }
     std::cout << "That string is cooked! String age: " << stringAge << std::endl;
 }
 
@@ -333,14 +333,14 @@ void Book::readPages(int pages)
     for(int i = pages; i > 0; --i)
     {    
         if(currentPage >= numberOfPages)
-            {
-                std::cout << "What a good book!" << std::endl; 
-                return;
-            }
+        {
+            std::cout << "What a good book!" << std::endl; 
+            return;
+        }
         else
         {
-            std::cout << "What an interesting page " << currentPage << " is..." <<std::endl;
-            ++currentPage;
+        std::cout << "What an interesting page " << currentPage << " is..." <<std::endl;
+        ++currentPage;
         }
     }
     std::cout << "It was so fun reading " << pages << " pages!" << std::endl; 
@@ -442,9 +442,9 @@ void Bird::Progeny::hatch()
     if(stillEgg)
     {
         for(int i = 1; i < 20; ++i)
-            {
-                std::cout << "Embryo is growing..." << std::endl;
-            }
+        {
+            std::cout << "Embryo is growing..." << std::endl;
+        }
         std::cout << "Fledgling has hatched!" << std::endl;
         stillEgg = false;
     }
@@ -502,10 +502,10 @@ void Bird::howManyFlaps()
     double i = distance;
     int j = 0;
     while(i > 0)
-        {
-            ++j;
-            i -= wingspan;
-        }
+    {
+        ++j;
+        i -= wingspan;
+    }
     std::cout << "Your bird has flappped " << j << " times so far!" << std::endl;
 }
 
@@ -557,12 +557,12 @@ void CPU::printClockSpeedAndSocket()
 void CPU::overheat()
 {
     while(temperature < 210)
-        {
-            std::cout << "Add another insert reverb!" << std::endl;
-            temperature += 15;
-        }   
+    {
+        std::cout << "Add another insert reverb!" << std::endl;
+        temperature += 15;
+    }   
     std::cout << "Overheated! Shutting down..." << std::endl;
-        temperature = 55;
+    temperature = 55;
 }
 
 struct Motherboard
@@ -616,10 +616,10 @@ void Motherboard::printMaxRAMAndManufacturer()
 void Motherboard::badSectors()
 {
     while(maxRAM > 0)
-        {
-            std::cout << "RAM corrupted!" << std::endl; 
-            --maxRAM;
-        }
+    {
+        std::cout << "RAM corrupted!" << std::endl; 
+        --maxRAM;
+    }
 }
 
 
@@ -676,18 +676,18 @@ void KeyboardAndMouse::typing(int words)
 {
     int check = 1;
     for(int i = words * 6; i > 0; --i)
+    {
+        if(check == 1)
         {
-            if(check == 1)
-            {
-                std::cout << "Click!" << std::endl;
-                check = 0;      
-            }
-            else
-            {
-                std::cout << "Clack!" << std::endl;
-                check = 1;
-            }
+            std::cout << "Click!" << std::endl;
+            check = 0;      
         }
+        else
+        {
+            std::cout << "Clack!" << std::endl;
+            check = 1;
+        }
+    }
 }
 
 struct CoolingSystem
@@ -759,10 +759,10 @@ void CoolingSystem::powerStatus(int hours)
 {
     int jigawatts = 8;
     for(int i = hours* 60; i > 0; --i)
-        {
-            std::cout << "Cooling has consumed " << jigawatts << " jigawatts!" << std::endl; 
-            jigawatts += 8;
-        }
+    {
+        std::cout << "Cooling has consumed " << jigawatts << " jigawatts!" << std::endl; 
+        jigawatts += 8;
+    }
 }
 
 struct GPU
@@ -836,29 +836,29 @@ void GPU::printFanSpeedRGBCycle()
 void GPU::upgrade()
 {
     while(model < 5)
+    {
+        if(model == 1)
         {
-            if(model == 1)
-            {
-                std::cout << "You got a GTX 1660!" << std::endl;
-                ++model;
-            }
-            if(model == 2)
-                {
-                    std::cout << "You got a RTX 2070!"<< std::endl;
-                    ++model;
-                }
-            if(model == 3)
-            {
-                std::cout << "You got a RTX 3070!"<< std::endl;
-                ++model;
-            }
-            if(model == 4)
-            {
-                std::cout << "You got a RTX 4090!"<< std::endl;
-                ++model;
-            }
+            std::cout << "You got a GTX 1660!" << std::endl;
+            ++model;
         }
-    model = 1;
+        if(model == 2)
+        {
+            std::cout << "You got a RTX 2070!"<< std::endl;
+            ++model;
+        }
+        if(model == 3)
+        {
+            std::cout << "You got a RTX 3070!"<< std::endl;
+            ++model;
+        }
+        if(model == 4)
+        {
+            std::cout << "You got a RTX 4090!"<< std::endl;
+            ++model;
+        }
+    }
+model = 1;
 }
 
 
