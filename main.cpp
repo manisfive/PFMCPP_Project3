@@ -858,7 +858,7 @@ void GPU::upgrade()
             ++model;
         }
     }
-model = 1;
+    model = 1;
 }
 
 
